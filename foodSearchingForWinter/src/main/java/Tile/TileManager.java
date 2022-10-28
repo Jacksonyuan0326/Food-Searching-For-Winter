@@ -12,8 +12,8 @@ import java.util.Objects;
 
 public class TileManager {
     GamePanel gp;
-    Tile[] tile;
-    int mapTileCord[][];
+    public Tile[] tile;
+    public int mapTileCord[][];
 
     public TileManager(GamePanel gp){
         this.gp = gp;
@@ -38,6 +38,7 @@ public class TileManager {
 
             tile[3] = new Tile();
             tile[3].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/Tile/grasswall.png")));
+            tile[3].collision = true;
             
 
         }catch (IOException e){

@@ -11,13 +11,13 @@ public class GamePanel extends JPanel implements  Runnable{
     //game screen setting
     final int fixedTileSize = 16;
     final int scaleFactor = 3;
-    public int tileSize = fixedTileSize * scaleFactor;
+    public int tileSize = fixedTileSize * scaleFactor; //48
     public int bunnytileWidth = 16 * scaleFactor;
     public int bunnytileHeight = 20 * scaleFactor;
 
     public final int maxScreenCol = 16;
     public final int maxScreenRow = 12;
-    public final int screenWidth = maxScreenCol * tileSize;
+    public final int screenWidth = maxScreenCol * tileSize; //16X48
     public final int screenHeight = maxScreenRow * tileSize;
 
     //add the control to the gamepanel
@@ -27,6 +27,8 @@ public class GamePanel extends JPanel implements  Runnable{
     int FPS = 60;
     TileManager tileM = new TileManager(this);
     Thread gameThread;
+    //check collision
+    public CollisonCheck checker = new CollisonCheck(this); //change
     //adding the bunny
     Bunny bunny = new Bunny(this, keyControl);
 

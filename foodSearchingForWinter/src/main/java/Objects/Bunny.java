@@ -16,8 +16,10 @@ public class Bunny extends Object{
     public Bunny (GamePanel gp, Control keyControl){
         this.gp = gp;
         this.keyControl = keyControl;
+        //rectangle = new Rectangle(0,0,48,60); //didn't use
         setBunnyBasic();
         getBunnyPixel();
+
     }
 
     public void setBunnyBasic(){
@@ -44,34 +46,61 @@ public class Bunny extends Object{
     }
 
     public void update(){
-        if (keyControl.isUp){
-            direction = "up";
-            ypo -= speed;
-        }
-        else if (keyControl.isDown){
-            direction = "down";
-            ypo += speed;
-        }
-        else if (keyControl.isLeft){
-            direction = "left";
-            xpo -= speed;
-        }
-        else if (keyControl.isRight){
-            direction = "right";
-            xpo += speed;
-        }
-        spriteCounter ++;
-        //can adjust this 10 so the animation can be smoother
-        if (spriteCounter > 10){
-            if (spriteNum == 1){
-                spriteNum = 2;
-            } else if (spriteNum == 2) {
-                spriteNum =1;
+        
+        if(keyControl.isUp==true || keyControl.isDown==true ||keyControl.isLeft==true ||keyControl.isRight==true){
+            if (keyControl.isUp){
+                direction = "up";
+                //ypo -= speed;  //change
             }
-            //reset the counter
-            spriteCounter = 0;
+            else if (keyControl.isDown){
+                direction = "down";
+                //ypo += speed;
+            }
+            else if (keyControl.isLeft){
+                direction = "left";
+                //xpo -= speed;
+            }
+            else if (keyControl.isRight){
+                direction = "right";
+                //xpo += speed;
+            }
+
+            IsCollison = false; //change start
+            gp.checker.check(this);
+
+            if(IsCollison==false){
+                switch(direction){
+                    case "up":
+                        ypo -= speed;
+                        break;
+                    case "down":
+                        ypo += speed;
+                        break;
+                    case "left":
+                        xpo -= speed;
+                        break;
+                    case "right":
+                        xpo += speed;
+                        break;
+                }
+                    
+            }
+
+            spriteCounter ++;
+            //can adjust this 10 so the animation can be smoother
+            if (spriteCounter > 10){
+                if (spriteNum == 1){
+                    spriteNum = 2;
+                } else if (spriteNum == 2) {
+                    spriteNum =1;
+                }
+                //reset the counter
+                spriteCounter = 0;
+            }
         }
     }
+
+    
 
     public void draw(Graphics g2){
         BufferedImage image = null;

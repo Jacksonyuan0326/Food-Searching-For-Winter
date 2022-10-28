@@ -1,6 +1,7 @@
 package Objects;
 
 import java.awt.image.BufferedImage;
+//import java.awt.Rectangle;
 
 public class Object {
 
@@ -11,5 +12,7 @@ public class Object {
     public String direction;
     public int spriteCounter = 0;
     public int spriteNum = 1;
+    //public Rectangle rectangle; //video has but didn't use
+    public boolean IsCollison = false; //change
 
 }
