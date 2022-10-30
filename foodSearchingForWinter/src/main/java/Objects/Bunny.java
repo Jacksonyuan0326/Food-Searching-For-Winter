@@ -67,7 +67,7 @@ public class Bunny extends Object{
 
             IsCollison = false; //change start
             gp.checker.check(this);
-
+            //if no collison happen, then move
             if(IsCollison==false){
                 switch(direction){
                     case "up":
