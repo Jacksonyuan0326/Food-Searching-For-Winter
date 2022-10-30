@@ -72,10 +72,9 @@ public class TileManager {
             dir.close();
 
         }catch (Exception e){
-
         }
     }
-    public void draw(Graphics2D g2){
+    public void drawMap(Graphics2D g2){
         //16 * 12 map
         int col = 0;
         int row = 0;
@@ -95,6 +94,6 @@ public class TileManager {
                 y += gp.tileSize;
             }
         }
-
     }
+
 }

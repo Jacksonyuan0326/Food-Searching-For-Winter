@@ -91,7 +91,7 @@ public class GamePanel extends JPanel implements  Runnable{
         //cascating the g to Graphics2D type
         Graphics2D g2 = (Graphics2D) g;
 
-        tileM.draw(g2);
+        tileM.drawMap(g2);
         bunny.draw(g2);
         g2.dispose();
     }
