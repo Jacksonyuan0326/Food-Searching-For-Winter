@@ -27,7 +27,9 @@ public class Bunny extends Object{
     }
 
 
-
+    /**This method is setting the basic atrribution of bunny such as initial x and y coodinates, the speed of movement
+     * and its direction
+     */
     public void setBunnyBasic(){
         xpo = 100;
         ypo = 100;
@@ -35,6 +37,9 @@ public class Bunny extends Object{
         direction = "down";
     }
 
+    /**This method is getting the bunny pixel from the resource
+     * @see the picture of bunny
+     */
     public void getBunnyPixel() {
         try {
             up1 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/Bunny/up1.png")));

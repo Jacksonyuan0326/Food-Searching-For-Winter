@@ -56,6 +56,11 @@ public class GamePanel extends JPanel implements  Runnable{
     }
 
     //automatically call this
+
+    /**This method is for the animation of the screen, because the refresh rate of the screen is too fast. We use a game
+     * loop to slow it down and for each update it will coming with a repaint to make the screen coherent
+     * FPS is 60, currentTime is bigger than lastTime and currentTime - lastTime = time passed, then update lastTime
+     */
     @Override
     public void run() {
         //time for update the frames
@@ -82,6 +87,9 @@ public class GamePanel extends JPanel implements  Runnable{
         }
     }
 
+    /**This method will update the position in the map of the character(bunny), the detail implementation
+     *  in Objects.bunny
+     */
     public void update(){
         bunny.update();
     }
