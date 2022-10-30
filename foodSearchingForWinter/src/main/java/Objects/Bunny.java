@@ -16,11 +16,17 @@ public class Bunny extends Object{
     public Bunny (GamePanel gp, Control keyControl){
         this.gp = gp;
         this.keyControl = keyControl;
+
         //rectangle = new Rectangle(0,0,48,60); //didn't use
+        //we should use this because we need the collision box
+        solidArea = new Rectangle(8 , 8, 32 , 32);
         setBunnyBasic();
         getBunnyPixel();
 
+
     }
+
+
 
     public void setBunnyBasic(){
         xpo = 100;
