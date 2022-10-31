@@ -94,6 +94,9 @@ public class GamePanel extends JPanel implements  Runnable{
         bunny.update();
     }
 
+    /**This method will draw the game component
+     * @param g
+     */
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         //cascating the g to Graphics2D type
