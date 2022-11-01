@@ -22,7 +22,9 @@ public class TileManager {
         this.gp = gp;
 
         tile = new Tile[15];
+        //!!we will change here for maxWorldCol and maxWorldRow
         mapTileCord = new int[gp.maxScreenCol][gp.maxScreenRow]; // will store all values in tileMap.txt
+
         getTileImage();
         readMap();
     }
@@ -60,12 +62,14 @@ public class TileManager {
      */
     public void readMap(){
         try {
+            //!!and here to tileWorld.txt
             InputStream dir = getClass().getResourceAsStream("/MappingFile/tileMap.txt");//can be substitue with file path here
             BufferedReader buffer = new BufferedReader(new InputStreamReader(dir));//read text file
 
             int col = 0;
             int row = 0;
 
+            //!!here we need Change to maxScreenCol and maxScreenRow to maxWorldCol and maxWorldRow
             while (col < gp.maxScreenCol && row < gp.maxScreenRow){//size of Map
                 String line = buffer.readLine();//read a line of text
 
@@ -113,4 +117,35 @@ public class TileManager {
         }
     }
 
+    /**This method will extend the map to a world, which means the map of the game
+     *will be bigger and screen will still be the origin size but map will move while
+     * bunny move to the boudary
+     * @param g2
+     */
+    public void drawWorld(Graphics2D g2){
+        int worldCol = 0;
+        int worldRow = 0;
+        while(worldCol < gp.maxWorldCol && worldRow < gp.maxWorldRow){
+            int tileNum = mapTileCord[worldCol][worldRow];
+
+            int worldX = worldCol * gp.tileSize;
+            int worldY = worldRow * gp.tileSize;
+            int screenX = WorldX - gp.bunny.xpo + gp.bunny.screenX;
+            int screenY = worldY - gp.bunny.ypo + gp.bunny.screenY;
+
+            if(worldX + gp.tileSize > gp.bunny.xpo - gp.bunny.screenX &&
+               worldX - gp.tileSize< gp.bunny.xpo + gp.bunny.screenX &&
+               worldY + gp.tileSize> gp.bunny.ypo - gp.bunny.screenY &&
+               worldY - gp.tileSize< gp.bunny.ypo + gp.bunny.screenY){
+                g2.drawImage(tile[tileNum].image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+            }
+
+            worldCol++;
+
+            if(worldCol == gp.maxWorldCol){
+                worldCol = 0;
+                worldRow++;
+            }
+        }
+    }
 }

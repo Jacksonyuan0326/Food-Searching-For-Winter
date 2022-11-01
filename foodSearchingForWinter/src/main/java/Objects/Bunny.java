@@ -12,17 +12,22 @@ import java.util.Objects;
 public class Bunny extends Object{
     GamePanel gp;
     Control keyControl;
+    public final int screenX;//!!where bunny located in the screen
+    public final int screenY;
 
     public Bunny (GamePanel gp, Control keyControl){
         this.gp = gp;
         this.keyControl = keyControl;
+
+        //!!will make bunny in the center of the screen
+        screenX = gp.screenWidth / 2 - (gp.tileSize / 2);
+        screenX = gp.screenHeight / 2 - (gp.tileSize / 2);
 
         //rectangle = new Rectangle(0,0,48,60); //didn't use
         //we should use this because we need the collision box
         solidArea = new Rectangle(8 , 8, 32 , 32);
         setBunnyBasic();
         getBunnyPixel();
-
 
     }
 
@@ -31,6 +36,9 @@ public class Bunny extends Object{
      * and its direction
      */
     public void setBunnyBasic(){
+        //we need change here if we using world map for 50*50
+        //xpo = gp.tileSize * 23;
+        //ypo = gp.tileSize * 21;
         xpo = 100;
         ypo = 100;
         speed = 4;
@@ -154,6 +162,7 @@ public class Bunny extends Object{
         }
         //importing the pixel
         g2.drawImage(image, xpo, ypo, gp.bunnytileWidth, gp.bunnytileHeight, null);
+        //!!and here we need to instead xpo and ypo of screenX, screenY
     }
 
 }
