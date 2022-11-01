@@ -33,7 +33,7 @@ public class TileManager {
      * The grass tile will be "0" in the tileMap.txt
      * The sidewalk tile will be "1" in the tileMap.txt
      * The water tile will be "2" in the tileMap.txt
-     * The grassWall tile will be "3" in the tileMap.txt
+     * The grassWall tile will be "3" in the tileMap.txt and will be collision against bunny
      */
     public void getTileImage(){
         try {
@@ -46,7 +46,7 @@ public class TileManager {
             //water
             tile[2] = new Tile();
             tile[2].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/Tile/water.png")));
-
+            //grassWall - Collision
             tile[3] = new Tile();
             tile[3].image = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/Tile/grasswall.png")));
             tile[3].collision = true;

@@ -36,7 +36,7 @@ public class Bunny extends Object{
      * and its direction
      */
     public void setBunnyBasic(){
-        //we need change here if we using world map for 50*50
+        //!!!we need change here if we using world map for 50*50
         //xpo = gp.tileSize * 23;
         //ypo = gp.tileSize * 21;
         xpo = 100;
