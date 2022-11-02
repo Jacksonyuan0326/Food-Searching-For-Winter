@@ -17,6 +17,6 @@ public class Object {
 
     public Rectangle solidArea;
     public int solidAreaDefaultX, solidAreaDefaultY;
-    public boolean IsCollison = false; //change
+    public boolean IsCollison = false;
 
 }

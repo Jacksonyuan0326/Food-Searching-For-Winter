@@ -68,21 +68,21 @@ public class CollisonCheck {
 
         int index = 999;
 
-        for(int i = 0, i < gp.obj.lenght; i++){
+        for(int i = 0; i < gp.the_rewards.length; i++){
             if(gp.the_rewards[i] != null){
                 //get bunny solid area position
                 object.solidArea.x = object.xpo +object.solidArea.x;
                 object.solidArea.y = object.ypo +object.solidArea.y;
                 // get the rewards solid area position
-                gp.the_rewards[i].solidArea.x = gp.the_rewards[i].xpo + gp.the_rewards[i].solidArea.x;
-                gp.the_rewards[i].solidArea.y = gp.the_rewards[i].ypo + gp.the_rewards[i].solidArea.y;
+                gp.the_rewards[i].solidArea.x = gp.the_rewards[i].x + gp.the_rewards[i].solidArea.x;
+                gp.the_rewards[i].solidArea.y = gp.the_rewards[i].y + gp.the_rewards[i].solidArea.y;
 
                 switch (object.direction){
                     case "up":
                         object.solidArea.y -= object.speed;
                         if(object.solidArea.intersects(gp.the_rewards[i].solidArea)){
                             if(gp.the_rewards[i].collision == true){
-                                object.IsCollision = true;
+                                object.IsCollison = true;
                             }
                             if(bunny == true){
                                 index = i;
@@ -93,7 +93,7 @@ public class CollisonCheck {
                         object.solidArea.y += object.speed;
                         if(object.solidArea.intersects(gp.the_rewards[i].solidArea)){
                             if(gp.the_rewards[i].collision == true){
-                                object.IsCollision = true;
+                                object.IsCollison = true;
                             }
                             if(bunny == true){
                                 index = i;
@@ -104,7 +104,7 @@ public class CollisonCheck {
                         object.solidArea.x -= object.speed;
                         if(object.solidArea.intersects(gp.the_rewards[i].solidArea)){
                             if(gp.the_rewards[i].collision == true){
-                                object.IsCollision = true;
+                                object.IsCollison = true;
                             }
                             if(bunny == true){
                                 index = i;
@@ -115,7 +115,7 @@ public class CollisonCheck {
                         object.solidArea.x += object.speed;
                         if(object.solidArea.intersects(gp.the_rewards[i].solidArea)){
                             if(gp.the_rewards[i].collision == true){
-                                object.IsCollision = true;
+                                object.IsCollison = true;
                             }
                             if(bunny == true){
                                 index = i;
@@ -123,10 +123,10 @@ public class CollisonCheck {
                         }
                         break;
                 }
-                object.solidArea.x = entity.solidAreaDefaultX;
-                object.solidArea.y = entity.solidAreaDefaultY;
-                gp.the_rewards[i].solidArea.x = gp.the_rewards[i].solidAreaDefaultX;
-                gp.the_rewards[i].solidArea.y = gp.the_rewards[i].solidAreaDefaultY;
+                object.solidArea.x = object.solidAreaDefaultX;
+                object.solidArea.y = object.solidAreaDefaultY;
+                gp.the_rewards[i].solidArea.x = gp.the_rewards[i].solidAreaDefault_x;
+                gp.the_rewards[i].solidArea.y = gp.the_rewards[i].solidAreaDefault_y;
             }
         }
 

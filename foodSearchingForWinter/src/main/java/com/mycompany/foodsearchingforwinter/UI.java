@@ -1,3 +1,5 @@
+
+/* 
 package java.com.mycompany.foodsearchingforwinter;
 
 public class UI {
@@ -17,3 +19,4 @@ public class UI {
         //we need Image for carrot and medkit counting
     }
 }
+*/
