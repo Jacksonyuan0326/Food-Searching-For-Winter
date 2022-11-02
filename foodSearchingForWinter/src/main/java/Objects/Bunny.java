@@ -13,7 +13,7 @@ public class Bunny extends Object{
     GamePanel gp;
     Control keyControl;
 
-    int score = 0;
+    public int score = 0;
 
 
     public Bunny (GamePanel gp, Control keyControl){

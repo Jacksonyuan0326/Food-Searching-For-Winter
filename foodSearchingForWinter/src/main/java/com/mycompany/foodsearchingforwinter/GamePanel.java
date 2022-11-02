@@ -35,7 +35,7 @@ public class GamePanel extends JPanel implements  Runnable{
     public PlaceSetter theSetter = new PlaceSetter(this);
 
     //User Interface
-    //public UI ui = new UI(this);
+    public UI ui = new UI(this);
     //adding the bunny
     Bunny bunny = new Bunny(this, keyControl);
     //array of rewards
@@ -124,7 +124,7 @@ public class GamePanel extends JPanel implements  Runnable{
         }
         bunny.draw(g2);
 
-        //ui.draw(g2);
+        ui.draw(g2);
         g2.dispose();
     }
 }

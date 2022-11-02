@@ -8,7 +8,7 @@ public class PlaceSetter {
 
     public PlaceSetter(GamePanel gp){
         this.gp = gp;
-    }
+    } 
 
     public void setThing(){
         //carrots
