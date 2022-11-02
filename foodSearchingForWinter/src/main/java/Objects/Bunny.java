@@ -150,8 +150,15 @@ public class Bunny extends Object{
                     medkitNum++;
                     gp.ui.showMessage("You got a medkit!");
                     break;
+                case "door":
+                    if(carrotNum == 5){
+                        gp.ui.gameFinished = true;
+                        gp.the_rewards[i] = null;
+                    }
+                    else if(carrotNum < 5)
+                        gp.ui.showMessage("You need more carrots!");
+                    break;
             }
-            gp.the_rewards[i] = null;
         }
     }
 

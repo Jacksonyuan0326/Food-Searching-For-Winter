@@ -35,7 +35,7 @@ public class PlaceSetter {
 
         //Door
         gp.the_rewards[5] = new Door();
-        gp.the_rewards[5].x = 26*gp.tileSize;
+        gp.the_rewards[5].x = 25*gp.tileSize;
         gp.the_rewards[5].y = 2*gp.tileSize;
 
         //medkit
