@@ -1,6 +1,7 @@
 package com.mycompany.foodsearchingforwinter;
 
 import Objects.Bunny;
+import Reward.All_Reward;
 import Tile.TileManager;
 
 import javax.swing.*;
@@ -30,8 +31,12 @@ public class GamePanel extends JPanel implements  Runnable{
     Thread gameThread;
     //check collision
     public CollisonCheck checker = new CollisonCheck(this); //change
+    //set rewards or other thing
+    public PlaceSetter theSetter = new PlaceSetter(this);
     //adding the bunny
     Bunny bunny = new Bunny(this, keyControl);
+    //array of rewards
+    public All_Reward the_rewards[] = new All_Reward[10];
 
     //set the drop in position
     int xpo = 100;
@@ -46,6 +51,10 @@ public class GamePanel extends JPanel implements  Runnable{
         this.setDoubleBuffered(true);
         this.addKeyListener(keyControl);
         this.setFocusable(true);
+    }
+
+    public void setUpGame(){
+        theSetter.setThing();
     }
 
     public void startGameThread(){
@@ -104,6 +113,12 @@ public class GamePanel extends JPanel implements  Runnable{
         Graphics2D g2 = (Graphics2D) g;
 
         tileM.drawMap(g2);
+        //draw rewards
+        for(int i = 0; i<the_rewards.length;i++){
+            if(the_rewards[i]!= null){
+                the_rewards[i].draw(g2, this);
+            }
+        }
         bunny.draw(g2);
         g2.dispose();
     }
