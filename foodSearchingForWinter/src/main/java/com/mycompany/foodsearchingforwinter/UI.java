@@ -19,7 +19,8 @@ public class UI {
     public boolean messageOn = false;
     public String message = "";
     int messageCounter = 0;
-    public boolean gameFinished = false;
+    public boolean gameFinished = false; //if player get all carrot
+    public boolean gameLoss = false; //if player have negative score
 
     //timer for game
     double play_time; 
@@ -46,7 +47,7 @@ public class UI {
      * @see The print message will show after bunny collect something
      */
     public void draw(Graphics2D g2) {
-        if(gameFinished == true){
+        if(gameFinished == true && gameLoss==false){
             
             g2.setFont(arial_80B);
             g2.setColor(Color.WHITE);
@@ -63,6 +64,23 @@ public class UI {
 
             g2.drawString(text, x, y);
 
+            gp.gameThread = null;
+        }
+        else if (gameLoss == true){
+            g2.setFont(arial_80B);
+            g2.setColor(Color.WHITE);
+            String text;
+            int textLength;
+            int x;
+            int y;
+            
+            text = "oh no! You loss!";
+            textLength =(int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
+
+            x = gp.screenWidth/2 - textLength/2;
+            y = gp.screenHeight/2;
+
+            g2.drawString(text, x, y);
             gp.gameThread = null;
         }
         else{        

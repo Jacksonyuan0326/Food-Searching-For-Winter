@@ -142,7 +142,10 @@ public class Bunny extends Object{
                 case "spoiled_carrot":
                     score-=5;//one carrot for decreasing 5 points
                     gp.the_rewards[i] = null;
-                    System.out.println("Score: " + score);
+                    gp.ui.showMessage("Punishment! you got a spoiled carrot!");
+                    if (score<0){
+                        gp.ui.gameLoss = true;
+                    }
                     break;
                 case "medkit":
                     score+=10;//one medkit for adding 10 points
