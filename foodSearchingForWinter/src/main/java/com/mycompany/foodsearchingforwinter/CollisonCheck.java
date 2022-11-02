@@ -81,7 +81,9 @@ public class CollisonCheck {
                     case "up":
                         object.solidArea.y -= object.speed;
                         if(object.solidArea.intersects(gp.the_rewards[i].solidArea)){
+                            //check if it hits a door (not a reward)
                             if(gp.the_rewards[i].collision == true){
+                                //player collison on 
                                 object.IsCollison = true;
                             }
                             if(bunny == true){
