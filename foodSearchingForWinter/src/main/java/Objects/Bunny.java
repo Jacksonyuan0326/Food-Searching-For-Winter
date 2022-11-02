@@ -15,7 +15,7 @@ public class Bunny extends Object{
 
     public int score = 0;
     public int carrotNum = 0;
-    // public int medkitNum = 0;
+    public int medkitNum = 0;
 
     public Bunny (GamePanel gp, Control keyControl){
         this.gp = gp;
@@ -137,7 +137,7 @@ public class Bunny extends Object{
                     score+=5;//one carrot for adding 5 points
                     carrotNum++;
                     gp.the_rewards[i] = null;
-                    System.out.println("Score: " + score);
+                    gp.ui.showMessage("You got a carrot!");
                     break;
                 case "spoiledCarrot":
                     score-=5;//one carrot for decreasing 5 points
@@ -147,7 +147,8 @@ public class Bunny extends Object{
                 case "medkit":
                     score+=10;//one medkit for adding 10 points
                     gp.the_rewards[i] = null;
-                    System.out.println("Score: " + score);
+                    medkitNum++;
+                    gp.ui.showMessage("You got a medkit!");
                     break;
             }
             gp.the_rewards[i] = null;
