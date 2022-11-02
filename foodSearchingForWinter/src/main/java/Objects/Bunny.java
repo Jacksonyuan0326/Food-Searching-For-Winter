@@ -139,7 +139,7 @@ public class Bunny extends Object{
                     gp.the_rewards[i] = null;
                     gp.ui.showMessage("You got a carrot!");
                     break;
-                case "spoiledCarrot":
+                case "spoiled_carrot":
                     score-=5;//one carrot for decreasing 5 points
                     gp.the_rewards[i] = null;
                     System.out.println("Score: " + score);

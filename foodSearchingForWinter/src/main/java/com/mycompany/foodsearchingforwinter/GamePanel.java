@@ -39,7 +39,7 @@ public class GamePanel extends JPanel implements  Runnable{
     //adding the bunny
     Bunny bunny = new Bunny(this, keyControl);
     //array of rewards
-    public All_Reward the_rewards[] = new All_Reward[10];
+    public All_Reward the_rewards[] = new All_Reward[20];
 
     //set the drop in position
     int xpo = 100;

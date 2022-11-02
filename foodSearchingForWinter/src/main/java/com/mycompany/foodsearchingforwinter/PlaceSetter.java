@@ -3,6 +3,7 @@ package com.mycompany.foodsearchingforwinter;
 import Reward.Door;
 import Reward.Reward_carrot;
 import Reward.Reward_medkit;
+import Punishment.*;
 
 public class PlaceSetter {
     GamePanel gp;
@@ -46,6 +47,24 @@ public class PlaceSetter {
         gp.the_rewards[7] = new Reward_medkit();
         gp.the_rewards[7].x = 20*gp.tileSize;
         gp.the_rewards[7].y = 8*gp.tileSize;
+
+        //spoiledcarrot
+        gp.the_rewards[8] = new spoiled_carrot();
+        gp.the_rewards[8].x = 6*gp.tileSize;
+        gp.the_rewards[8].y = 15*gp.tileSize;
+
+        gp.the_rewards[9] = new spoiled_carrot();
+        gp.the_rewards[9].x = 3*gp.tileSize;
+        gp.the_rewards[9].y = 8*gp.tileSize;
+
+        gp.the_rewards[10] = new spoiled_carrot();
+        gp.the_rewards[10].x = 20*gp.tileSize;
+        gp.the_rewards[10].y = 13*gp.tileSize;
+
+        gp.the_rewards[11] = new spoiled_carrot();
+        gp.the_rewards[11].x = 18*gp.tileSize;
+        gp.the_rewards[11].y = 5*gp.tileSize;
+
 
 
 
