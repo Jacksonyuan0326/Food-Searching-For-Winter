@@ -56,6 +56,21 @@ public class CollisonCheck {
                 }
                 break;
         }
+    }
 
+    public int checkRewards(Object object, boolean bunny ){
+
+        int index = 999;
+
+        for(int i = 0, i < gp.obj.lenght; i++){
+            if(gp.obj[i] != null){
+                //get bunny solid area position
+                object.solidArea.x = object.xpo +object.solidArea.x;
+                object.solidArea.y = object.ypo +object.solidArea.y;
+                // get the rewards solid area position
+            }
+        }
+
+        return index;
     }
 }

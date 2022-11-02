@@ -16,6 +16,7 @@ public class Object {
     //public Rectangle rectangle; //video has but didn't use
 
     public Rectangle solidArea;
+    public int solidAreaDefaultX, solidAreaDefaultY;
     public boolean IsCollison = false; //change
 
 }
