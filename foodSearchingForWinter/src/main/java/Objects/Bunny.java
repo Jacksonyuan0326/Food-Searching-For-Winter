@@ -13,6 +13,8 @@ public class Bunny extends Object{
     GamePanel gp;
     Control keyControl;
 
+    int score = 0;
+
 
     public Bunny (GamePanel gp, Control keyControl){
         this.gp = gp;
@@ -82,6 +84,11 @@ public class Bunny extends Object{
 
             IsCollison = false; //change start
             gp.checker.check(this);
+
+            //check rewards collision
+            int rewardsIndex = gp.checker.checkRewards(this, true);
+            pickUpRewards(rewardsIndex);
+
             //if no collison happen, then move
             if(IsCollison==false){
                 switch(direction){
@@ -115,7 +122,35 @@ public class Bunny extends Object{
         }
     }
 
-    
+    /**This method will remove the rewards from the rewards list if bunny
+     * reach the position, otherwise it will not do anything
+     * @param i the position of the reward in the rewards list
+     * @see the rewards will disappear from the screen and collected by bunny
+     */
+    public void pickUpRewards(int i){
+        if(i != 999){
+            String rewardType = gp.the_rewards[i].name;
+
+            switch (rewardType){
+                case "carrot":
+                    score+=5;//one carrot for adding 5 points
+                    gp.the_rewards = null;
+                    System.out.println("Score: " + score);
+                    break;
+                case "spoiledCarrot":
+                    score-=5;//one carrot for decreasing 5 points
+                    gp.the_rewards = null;
+                    System.out.println("Score: " + score);
+                    break;
+                case "medkit":
+                    score+=10;//one medkit for adding 10 points
+                    gp.the_rewards = null;
+                    System.out.println("Score: " + score);
+                    break;
+            }
+            gp.the_rewards[i] = null;
+        }
+    }
 
     public void draw(Graphics g2){
         BufferedImage image = null;
