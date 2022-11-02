@@ -4,6 +4,8 @@ import java.awt.Font;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.*;
+import java.text.DecimalFormat;
+
 import Reward.Reward_carrot;
 import Reward.Reward_medkit;
 
@@ -18,6 +20,10 @@ public class UI {
     public String message = "";
     int messageCounter = 0;
     public boolean gameFinished = false;
+
+    //timer for game
+    double play_time; 
+    DecimalFormat dformat = new DecimalFormat("#0.00");
 
     public UI(GamePanel gp){
         this.gp = gp;
@@ -70,6 +76,10 @@ public class UI {
             //ADD MEDKIT SESSION HERE
             g2.drawImage(medkitImage, 400,12, 48, 48, null );
             g2.drawString( " x " + gp.bunny.medkitNum, 430 , 50);
+
+            //calculate the time
+            play_time+= (double)1/60; //60 frame/sec so 
+            g2.drawString("Total time: "+dformat.format(play_time)+" sec", 600, 50);
 
             if(messageOn == true){
             g2.setFont(g2.getFont().deriveFont(30F));
