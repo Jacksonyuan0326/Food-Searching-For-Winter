@@ -134,17 +134,17 @@ public class Bunny extends Object{
             switch (rewardType){
                 case "carrot":
                     score+=5;//one carrot for adding 5 points
-                    gp.the_rewards = null;
+                    gp.the_rewards[i] = null;
                     System.out.println("Score: " + score);
                     break;
                 case "spoiledCarrot":
                     score-=5;//one carrot for decreasing 5 points
-                    gp.the_rewards = null;
+                    gp.the_rewards[i] = null;
                     System.out.println("Score: " + score);
                     break;
                 case "medkit":
                     score+=10;//one medkit for adding 10 points
-                    gp.the_rewards = null;
+                    gp.the_rewards[i] = null;
                     System.out.println("Score: " + score);
                     break;
             }
