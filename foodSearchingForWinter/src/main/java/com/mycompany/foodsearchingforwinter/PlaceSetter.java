@@ -1,5 +1,6 @@
 package com.mycompany.foodsearchingforwinter;
 
+import Reward.Door;
 import Reward.Reward_carrot;
 
 public class PlaceSetter {
@@ -10,6 +11,7 @@ public class PlaceSetter {
     }
 
     public void setThing(){
+        //carrots
         gp.the_rewards[0] = new Reward_carrot();
         gp.the_rewards[0].x = 6*gp.tileSize;
         gp.the_rewards[0].y = 9*gp.tileSize;
@@ -29,5 +31,10 @@ public class PlaceSetter {
         gp.the_rewards[4] = new Reward_carrot();
         gp.the_rewards[4].x = 6*gp.tileSize;
         gp.the_rewards[4].y = 2*gp.tileSize;
+
+        //Door
+        gp.the_rewards[5] = new Door();
+        gp.the_rewards[5].x = 26*gp.tileSize;
+        gp.the_rewards[5].y = 2*gp.tileSize;
     }
 }
