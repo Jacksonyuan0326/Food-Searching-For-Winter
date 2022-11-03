@@ -14,7 +14,11 @@ public class All_Reward {
     public int solidAreaDefault_x = 0;
     public int solidAreaDefault_y = 0;
 
-
+    /**This method draws image on map
+     * 
+     * @param g2 Graphics2d
+     * @param gp GamePanel
+     */
     public void draw(Graphics2D g2, GamePanel gp){
         g2.drawImage(image, x,y, gp.tileSize, gp.tileSize, null);
     }

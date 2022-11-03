@@ -5,14 +5,18 @@ import Reward.Reward_carrot;
 import Reward.Reward_medkit;
 import Punishment.*;
 
-
+/**
+ * This class is for setting object positions
+ */
 public class PlaceSetter {
     GamePanel gp;
 
     public PlaceSetter(GamePanel gp){
         this.gp = gp;
     } 
-
+    /**
+     * This method sets the position of objects in the reward class in map
+     */
     public void setThing(){
         //carrots
         gp.the_rewards[0] = new Reward_carrot();
