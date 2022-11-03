@@ -2,7 +2,9 @@ package Reward;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
+/**This class is responsible for reading the door image and put in map */
 public class Door extends All_Reward {
+    /**Constructor read image,initialize name, and set collison to true */
     public Door(){
         name = "door";
         collision = true;

@@ -1,14 +1,16 @@
 package com.mycompany.foodsearchingforwinter; //change all below
 import Objects.Object;
 
+/**This class check the collison between objects */
 public class CollisonCheck {
     GamePanel gp;
     
+    /**initialize the GamePanel */
     public CollisonCheck(GamePanel gp){
         this.gp = gp;
     }
+
     /**This method used to check for player's collison status
-     * 
      * @param object any player that belong to the the object class
      */
     public void check(Object object){

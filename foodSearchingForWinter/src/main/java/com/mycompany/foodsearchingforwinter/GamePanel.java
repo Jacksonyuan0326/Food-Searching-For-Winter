@@ -14,13 +14,21 @@ public class GamePanel extends JPanel implements  Runnable{
     //game screen setting
     final int fixedTileSize = 16;
     final int scaleFactor = 3;
+
+    /**each tile width or hight =48 */
     public int tileSize = fixedTileSize * scaleFactor; //48
+    /**bunny tile width */
     public int bunnytileWidth = 16 * scaleFactor; // 48
+    /**bunny tile height */
     public int bunnytileHeight = 20 * scaleFactor; //60
 
+    /**the window UI col */
     public final int maxScreenCol = 27; //origin 16
+    /**the window UI row */
     public final int maxScreenRow = 17; //origin 12
+    /**total # of pixel for window width */
     public final int screenWidth = maxScreenCol * tileSize; //16X48
+    /**total # of pixel for window height */
     public final int screenHeight = maxScreenRow * tileSize;
 
 
@@ -31,16 +39,16 @@ public class GamePanel extends JPanel implements  Runnable{
     int FPS = 60;
     TileManager tileM = new TileManager(this);
     Thread gameThread;
-    //check collision
+    /**check collision*/
     public CollisonCheck checker = new CollisonCheck(this); //change
-    //set rewards or other thing
+    /**set rewards or other thing*/
     public PlaceSetter theSetter = new PlaceSetter(this);
 
-    //User Interface
+    /**User Interface*/
     public UI ui = new UI(this);
-    //adding the bunny
+    /**adding the bunny player*/
     Bunny bunny = new Bunny(this, keyControl);
-    //array of rewards
+    /**array of object belong rewards class */
     public All_Reward the_rewards[] = new All_Reward[20];
 
     //set the drop in position
@@ -49,7 +57,7 @@ public class GamePanel extends JPanel implements  Runnable{
     int playerSpeed = 4;
 
 
-
+    /**constructor for setting the backgroup color, dimention, key-controls of gamePanel */
     public GamePanel(){
         this.setPreferredSize(new Dimension(screenWidth, screenHeight));
         this.setBackground(Color.black);
@@ -58,7 +66,6 @@ public class GamePanel extends JPanel implements  Runnable{
         this.setFocusable(true);
     }
     /**This method sets up the position of rewards and door in the map
-     * 
      */
     public void setUpGame(){
         theSetter.setThing();
@@ -114,7 +121,7 @@ public class GamePanel extends JPanel implements  Runnable{
     }
 
     /**This method will draw the game component
-     * @param g
+     * @param g Graphics object used to draw images
      */
     public void paintComponent(Graphics g){
         super.paintComponent(g);

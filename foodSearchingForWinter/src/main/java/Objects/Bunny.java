@@ -9,14 +9,25 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Objects;
 
+/**
+ * This is the bunny player class
+ */
 public class Bunny extends Object{
     GamePanel gp;
     Control keyControl;
 
+    /** the total score player has */
     public int score = 0;
+    /** the total carrots player gets */
     public int carrotNum = 0;
+    /** the total medkit player gets*/
     public int medkitNum = 0;
 
+    /**The constructor sets basic position of player bunny
+     * and read the bunny image
+     * @param gp need GamePanel object
+     * @param keyControl need Control object that manages the keyborad movement
+     */
     public Bunny (GamePanel gp, Control keyControl){
         this.gp = gp;
         this.keyControl = keyControl;
@@ -64,8 +75,7 @@ public class Bunny extends Object{
     }
     /**This method sets the direction of bunny when user press the WASD keys in 
      * the keyboard and check whether there is a collision with other object
-     * in the map
-     * @return none
+     * in the map.
      */
     public void update(){
         
@@ -130,7 +140,6 @@ public class Bunny extends Object{
     /**This method will remove the rewards from the rewards list if bunny
      * reach the position, otherwise it will not do anything
      * @param i the position of the reward in the rewards list
-     * @see the rewards will disappear from the screen and collected by bunny
      */
     public void pickUpRewards(int i){
         if(i != 999){

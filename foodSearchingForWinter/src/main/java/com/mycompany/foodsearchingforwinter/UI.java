@@ -11,21 +11,31 @@ import Reward.Reward_medkit;
 
 import javax.swing.text.AttributeSet.FontAttribute;
 
+/**The user interface class for display game information on screen. */
 public class UI {
     GamePanel gp;
     Font arial_40, arial_80B;
     BufferedImage carrotImage;
     BufferedImage medkitImage;
+    /**for checking if need to display image */
     public boolean messageOn = false;
+    /**the string you want to display on screen */
     public String message = "";
     int messageCounter = 0;
+    /**check if game needs to finish */
     public boolean gameFinished = false; //if player get all carrot
+    /**check if player losses the game */
     public boolean gameLoss = false; //if player have negative score
 
     //timer for game
     double play_time; 
     DecimalFormat dformat = new DecimalFormat("#0.00");
 
+    /**
+     * Setting the font for messages display on screen.
+     * Reads all reward images
+     * @param gp need GamePanel for drawing stuff
+     */
     public UI(GamePanel gp){
         this.gp = gp;
         arial_40 = new Font("Arial", Font.PLAIN, 40);
@@ -36,15 +46,18 @@ public class UI {
         Reward_medkit medkit = new Reward_medkit();
         medkitImage = medkit.image;
     }
+    /**
+     * This method gets the text you want to display
+     * @param text string for displaying in the screen
+     */
     public void showMessage(String text){
         message = text;
         messageOn = true;
     }
+
     /**This method will show the score and carrot for bunny in
      * the screen, and will print message when bunny collect something
      * @param g2 the image of screen
-     * @see The text and image will show at the left top in the screen
-     * @see The print message will show after bunny collect something
      */
     public void draw(Graphics2D g2) {
         if(gameFinished == true && gameLoss==false){

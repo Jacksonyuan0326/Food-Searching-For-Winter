@@ -6,14 +6,14 @@
 package com.mycompany.foodsearchingforwinter;
 
 import javax.swing.*;
-
-/**
- *
- * @author Clinton
- */
+/**the main class that runs this game */
 public class Main {
 
-    public static void main(String[] args) {
+    /**
+     * the main() function 
+     * @param args an array of string
+     */
+     public static void main(String[] args) {
         System.out.println("Hello World!");
 
         //creating new frame
