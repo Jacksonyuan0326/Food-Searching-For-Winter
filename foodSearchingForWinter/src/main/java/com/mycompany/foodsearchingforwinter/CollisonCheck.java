@@ -7,7 +7,10 @@ public class CollisonCheck {
     public CollisonCheck(GamePanel gp){
         this.gp = gp;
     }
-
+    /**This method used to check for player's collison status
+     * 
+     * @param object any player that belong to the the object class
+     */
     public void check(Object object){
         int obj_left_x = object.xpo + object.solidArea.x;
         int obj_right_x = object.xpo+ object.solidArea.x + object.solidArea.width;

@@ -7,7 +7,9 @@ import Tile.TileManager;
 import javax.swing.*;
 import java.awt.*;
 
-//this GamePanel will have all the functions in JPanel
+/**
+ * this GamePanel will have all the functions in JPanel
+ */
 public class GamePanel extends JPanel implements  Runnable{
     //game screen setting
     final int fixedTileSize = 16;
@@ -55,11 +57,15 @@ public class GamePanel extends JPanel implements  Runnable{
         this.addKeyListener(keyControl);
         this.setFocusable(true);
     }
-
+    /**This method sets up the position of rewards and door in the map
+     * 
+     */
     public void setUpGame(){
         theSetter.setThing();
     }
-
+    /**
+     * This method passes the game panel into the Thread()
+     */
     public void startGameThread(){
         //passing the game panel into the Thread()
         //this = the gamepanel in this case

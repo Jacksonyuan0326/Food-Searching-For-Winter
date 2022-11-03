@@ -62,7 +62,11 @@ public class Bunny extends Object{
             e.printStackTrace();
         }
     }
-
+    /**This method sets the direction of bunny when user press the WASD keys in 
+     * the keyboard and check whether there is a collision with other object
+     * in the map
+     * @return none
+     */
     public void update(){
         
         if(keyControl.isUp==true || keyControl.isDown==true ||keyControl.isLeft==true ||keyControl.isRight==true){
@@ -164,7 +168,10 @@ public class Bunny extends Object{
             }
         }
     }
-
+    /**
+     * This method used to import and draw the image
+     * @param g2 the grahics use to draw images on map
+     */
     public void draw(Graphics g2){
         BufferedImage image = null;
         switch (direction){
