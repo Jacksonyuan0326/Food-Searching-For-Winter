@@ -11,14 +11,13 @@ import Punishment.*;
 public class PlaceSetter {
     GamePanel gp;
 
-    /**Constructor 
-     * 
+    /**Constructor initialze game panel
      * @param gp need to have gamepanel
      */
     public PlaceSetter(GamePanel gp){
         this.gp = gp;
     } 
-    
+
     /**
      * This method sets the position of objects in the reward class in map
      */

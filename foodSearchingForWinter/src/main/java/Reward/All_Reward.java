@@ -29,7 +29,6 @@ public class All_Reward {
     public int solidAreaDefault_y = 0;
 
     /**This method draws image on map
-     * 
      * @param g2 Graphics2d
      * @param gp GamePanel
      */

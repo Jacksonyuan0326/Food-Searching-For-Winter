@@ -56,7 +56,6 @@ public class Bunny extends Object{
     }
 
     /**This method is getting the bunny pixel from the resource
-     * @see the picture of bunny
      */
     public void getBunnyPixel() {
         try {

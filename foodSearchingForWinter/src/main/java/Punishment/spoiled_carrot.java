@@ -5,7 +5,9 @@ import javax.imageio.ImageIO;
 
 import Reward.All_Reward;
 
+/**this class responsible for store punishment spoiled carrot */
 public class spoiled_carrot extends All_Reward{
+    /**initialize the name and read spoiled carrot image */
     public spoiled_carrot(){
         name = "spoiled_carrot";
     

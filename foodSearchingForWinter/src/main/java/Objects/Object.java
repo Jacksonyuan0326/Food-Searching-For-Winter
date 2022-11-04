@@ -21,7 +21,7 @@ public class Object {
     /**use to switch to different images */
     public int spriteNum = 1;
 
-    /**the position of character in rectangle format*/; 
+    /**the position of character in rectangle format*/
     public Rectangle solidArea;
     /**default position in the rectangle */
     public int solidAreaDefaultX, solidAreaDefaultY;

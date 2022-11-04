@@ -10,9 +10,12 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Objects;
 
+/**this class manages all the tile */
 public class TileManager {
     GamePanel gp;
+    /**an array of tile */
     public Tile[] tile;
+    /**store the tile number in 2d array */
     public int mapTileCord[][];//load tileMap.txt
 
     /**This method will manage and call all method to struct the map in this class
@@ -91,7 +94,6 @@ public class TileManager {
 
     /**This method will draw the map of this game with 16*12 map with grass, sidewalk, water and grasswall
      * @param g2 Take the Graphic2D g2 from GamePanel.Java
-     * @see the Map of game
      */
     public void drawMap(Graphics2D g2){
         //16 * 12 map
