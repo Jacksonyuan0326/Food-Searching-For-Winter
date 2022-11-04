@@ -3,6 +3,8 @@ package com.mycompany.foodsearchingforwinter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import javax.swing.plaf.basic.BasicComboBoxUI.KeyHandler;
+
 /**This class implements keylistener which It listens to the rest of the user's
  * input from the keyboard, which includes variables representing the four directions
  * of up, down, left and right. The movement of the character is controlled by pressing or
@@ -11,7 +13,13 @@ import java.awt.event.KeyListener;
 public class Control implements KeyListener {
     /** the boolean direction of the player */
     public boolean isUp, isDown, isRight, isLeft, isIdle;
+    GamePanel gp;
 
+    public Control(GamePanel gp){
+        this.gp = gp;
+    }
+    public Control() {
+    }
     @Override
     public void keyTyped(KeyEvent e) {
 
@@ -35,6 +43,14 @@ public class Control implements KeyListener {
         }
         if (code == KeyEvent.VK_D){
             isRight = true;
+        }
+        if (code == KeyEvent.VK_P){
+            if(gp.gameState == gp.playState){
+                gp.gameState = gp.pauseState;
+            }
+            else if(gp.gameState == gp.pauseState){
+                gp.gameState = gp.playState;
+            }
         }
     }
 

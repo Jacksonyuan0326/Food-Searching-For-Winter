@@ -33,7 +33,7 @@ public class GamePanel extends JPanel implements  Runnable{
 
 
     //add the control to the gamepanel
-    Control keyControl = new Control();
+    Control keyControl = new Control(this);
 
     //set up FPS
     int FPS = 60;
@@ -51,6 +51,10 @@ public class GamePanel extends JPanel implements  Runnable{
     /**array of object belong rewards class */
     public All_Reward the_rewards[] = new All_Reward[20];
 
+    //GAME STATE
+    public int gameState;
+    public final int playState = 1;
+    public final int pauseState = 2;
     //set the drop in position
     int xpo = 100;
     int ypo = 100;
@@ -69,6 +73,7 @@ public class GamePanel extends JPanel implements  Runnable{
      */
     public void setUpGame(){
         theSetter.setThing();
+        gameState = playState;
     }
     /**
      * This method passes the game panel into the Thread()
@@ -117,7 +122,13 @@ public class GamePanel extends JPanel implements  Runnable{
      *  in Objects.bunny
      */
     public void update(){
-        bunny.update();
+        if(gameState == playState){
+            //PLAY STATE
+            bunny.update();
+        }
+        if(gameState == pauseState){
+            //PAUSE STATE
+        }
     }
 
     /**This method will draw the game component

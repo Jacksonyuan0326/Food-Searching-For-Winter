@@ -14,6 +14,7 @@ import javax.swing.text.AttributeSet.FontAttribute;
 /**The user interface class for display game information on screen. */
 public class UI {
     GamePanel gp;
+    Graphics2D g2;
     Font arial_40, arial_80B;
     BufferedImage carrotImage;
     BufferedImage medkitImage;
@@ -60,6 +61,15 @@ public class UI {
      * @param g2 the image of screen
      */
     public void draw(Graphics2D g2) {
+        this.g2 = g2;
+        g2.setFont(arial_40);
+        g2.setColor(Color.white);
+        if(gp.gameState == gp.playState){
+            
+        }
+        if(gp.gameState == gp.pauseState){
+            pauseScreen();
+        }
         if(gameFinished == true && gameLoss==false){
             
             g2.setFont(arial_80B);
@@ -124,5 +134,19 @@ public class UI {
             }
         }
     }
+    }
+    public void pauseScreen(){
+        this.g2 = g2;
+        g2.setFont(arial_80B);
+        String text = "PAUSED";
+        int x = getCentreX(text);
+        int y = gp.screenHeight /2;
+
+        g2.drawString(text, x, y);
+    }
+    public int getCentreX(String text){
+        int length = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
+        int x = gp.screenWidth / 2 - length /2;
+        return x;
     }
 }
