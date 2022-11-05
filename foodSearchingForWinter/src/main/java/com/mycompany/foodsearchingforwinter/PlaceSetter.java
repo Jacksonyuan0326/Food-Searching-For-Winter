@@ -61,7 +61,7 @@ public class PlaceSetter {
         //spoiledcarrot
         gp.the_rewards[8] = new spoiled_carrot();
         gp.the_rewards[8].x = 6*gp.tileSize;
-        gp.the_rewards[8].y = 15*gp.tileSize;
+        gp.the_rewards[8].y = 14*gp.tileSize;
 
         gp.the_rewards[9] = new spoiled_carrot();
         gp.the_rewards[9].x = 3*gp.tileSize;

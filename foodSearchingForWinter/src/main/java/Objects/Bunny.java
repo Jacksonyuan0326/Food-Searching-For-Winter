@@ -2,6 +2,7 @@ package Objects;
 
 import com.mycompany.foodsearchingforwinter.Control;
 import com.mycompany.foodsearchingforwinter.GamePanel;
+import Reward.Reward_medkit; //change
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -108,15 +109,18 @@ public class Bunny extends Object{
                 switch(direction){
                     case "up":
                         ypo -= speed;
+                        random_carrot2();
                         break;
                     case "down":
                         ypo += speed;
+                        random_carrot1();
                         break;
                     case "left":
                         xpo -= speed;
                         break;
                     case "right":
                         xpo += speed;
+                        random_carrot3();
                         break;
                 }
                     
@@ -222,6 +226,56 @@ public class Bunny extends Object{
         //importing the pixel
         g2.drawImage(image, xpo, ypo, gp.bunnytileWidth, gp.bunnytileHeight, null);
 
+    }
+
+    private void random_carrot1(){
+        if(ypo<300 && xpo<500){ //change------------- random spoiled carrot
+            gp.the_rewards[12]=new Reward_medkit();
+            gp.the_rewards[12].x = 7*gp.tileSize;
+            gp.the_rewards[12].y = 6*gp.tileSize;
+
+            gp.the_rewards[6] = null;
+        }
+        else if (ypo>300 && ypo<576 && xpo<500){
+            gp.the_rewards[12]=null;
+
+            gp.the_rewards[6] = new Reward_medkit();
+            gp.the_rewards[6].x = 3*gp.tileSize;
+            gp.the_rewards[6].y = 14*gp.tileSize;
+        }
+    }
+
+    private void random_carrot2(){
+        if(ypo<300 && xpo>500 && xpo<1000){ //change------------- random spoiled carrot
+            gp.the_rewards[13]=new Reward_medkit();
+            gp.the_rewards[13].x = 14*gp.tileSize;
+            gp.the_rewards[13].y = 5*gp.tileSize;
+
+            gp.the_rewards[7] = null;
+        }
+        else if (ypo>300 && ypo<576 && xpo>500){
+            gp.the_rewards[12]=null;
+            gp.the_rewards[13] = null;
+
+            gp.the_rewards[7] = new Reward_medkit();
+            gp.the_rewards[7].x = 20*gp.tileSize;
+            gp.the_rewards[7].y = 7*gp.tileSize;
+        }
+    }
+
+    private void random_carrot3(){
+        if(xpo>700 ){ //change------------- random spoiled carrot
+            gp.the_rewards[6] = null;
+            gp.the_rewards[13] =null;
+
+            gp.the_rewards[14] = new Reward_medkit();
+            gp.the_rewards[14].x = 20*gp.tileSize;
+            gp.the_rewards[14].y = 14*gp.tileSize;
+
+        }
+        else if (xpo<700){
+            gp.the_rewards[14] = null;
+        }
     }
 
 }
