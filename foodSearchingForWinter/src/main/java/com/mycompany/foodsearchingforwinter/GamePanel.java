@@ -53,6 +53,7 @@ public class GamePanel extends JPanel implements  Runnable{
 
     //GAME STATE
     public int gameState;
+    public final int titleState = 0;
     public final int playState = 1;
     public final int pauseState = 2;
     //set the drop in position
@@ -73,7 +74,7 @@ public class GamePanel extends JPanel implements  Runnable{
      */
     public void setUpGame(){
         theSetter.setThing();
-        gameState = playState;
+        gameState = titleState;
     }
     /**
      * This method passes the game panel into the Thread()
@@ -139,16 +140,22 @@ public class GamePanel extends JPanel implements  Runnable{
         //cascating the g to Graphics2D type
         Graphics2D g2 = (Graphics2D) g;
 
-        tileM.drawMap(g2);
-        //draw rewards
-        for(int i = 0; i<the_rewards.length;i++){
-            if(the_rewards[i]!= null){
-                the_rewards[i].draw(g2, this);
-            }
+        //TITLE SCREEN
+        if(gameState == titleState){
+            ui.draw(g2);
         }
-        bunny.draw(g2);
-
-        ui.draw(g2);
-        g2.dispose();
+        else{      
+            tileM.drawMap(g2);
+            //draw rewards
+            for(int i = 0; i<the_rewards.length;i++){
+                if(the_rewards[i]!= null){
+                    the_rewards[i].draw(g2, this);
+                }
+            }
+            bunny.draw(g2);
+    
+            ui.draw(g2);
+            g2.dispose();}
+  
     }
 }
