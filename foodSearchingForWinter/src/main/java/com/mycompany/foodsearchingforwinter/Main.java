@@ -6,6 +6,7 @@
 package com.mycompany.foodsearchingforwinter;
 
 import javax.swing.*;
+
 /**the main class that runs this game */
 public class Main {
 

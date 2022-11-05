@@ -117,8 +117,7 @@ public class UI {
             //ADD MEDKIT SESSION HERE
             g2.drawImage(medkitImage, 400,12, 48, 48, null );
             g2.drawString( " x " + gp.bunny.medkitNum, 430 , 50);
-
-            //calculate the time
+            
             play_time+= (double)1/60; //60 frame/sec so 
             g2.drawString("Total time: "+dformat.format(play_time)+" sec", 600, 50);
 
