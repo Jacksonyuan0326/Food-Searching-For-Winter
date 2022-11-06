@@ -18,6 +18,18 @@
       <artifactId>jtransc-rt</artifactId>
       <version>0.5.0-ALPHA4</version>
     </dependency>
+  
+    <dependency>
+      <groupId>com.jtransc</groupId>
+      <artifactId>jtransc-rt</artifactId>
+      <version>0.5.0-ALPHA4</version>
+    </dependency>
+  
+    <dependency>
+      <groupId>no.tornado</groupId>
+      <artifactId>tornadofx-android-compat</artifactId>
+      <version>1.0.1</version>
+    </dependency>
   </dependencies>
 
   <build>

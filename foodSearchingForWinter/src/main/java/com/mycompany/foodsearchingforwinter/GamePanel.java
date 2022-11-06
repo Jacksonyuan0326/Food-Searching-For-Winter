@@ -1,6 +1,7 @@
 package com.mycompany.foodsearchingforwinter;
 
 import Objects.Bunny;
+import Punishment.Wolf;
 import Reward.All_Reward;
 import Tile.TileManager;
 
@@ -50,6 +51,7 @@ public class GamePanel extends JPanel implements  Runnable{
     Bunny bunny = new Bunny(this, keyControl);
     /**array of object belong rewards class */
     public All_Reward the_rewards[] = new All_Reward[20];
+    public Wolf wolf[] = new Wolf[5];
 
     //GAME STATE
     public int gameState;
