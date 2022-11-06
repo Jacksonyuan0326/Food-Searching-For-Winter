@@ -23,9 +23,6 @@ public class Bunny extends Object{
     /** the total medkit player gets*/
     public int medkitNum = 0;
 
-    /** the health of the bunny **/
-    public int health = 100;
-
     /**The constructor sets basic position of player bunny
      * and read the bunny image
      * @param gp need GamePanel object
@@ -105,6 +102,10 @@ public class Bunny extends Object{
             int rewardsIndex = gp.checker.checkRewards(this, true);
             pickUpRewards(rewardsIndex);
 
+            /** check wolf collision */
+            int wolfIndex = gp.checker.checkWolf(this, gp.wolf);
+            bunnyDie(wolfIndex);
+
             //if no collison happen, then move
             if(IsCollison==false){
                 switch(direction){
@@ -181,6 +182,17 @@ public class Bunny extends Object{
             }
         }
     }
+
+    public void bunnyDie(int index){
+        if ( index != 999){
+            score -= 50;
+            if (score<0){
+                gp.ui.gameLoss = true;
+            }
+            System.out.println("Bunny touched the wolf, bunny dies!\n");
+        }
+    }
+
     /**
      * This method used to import and draw the image
      * @param g2 the grahics use to draw images on map

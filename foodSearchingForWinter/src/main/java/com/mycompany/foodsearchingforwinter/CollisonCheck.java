@@ -139,4 +139,57 @@ public class CollisonCheck {
 
         return index;
     }
+
+    public int checkWolf(Object bunny, Object[] wolf){
+        int index = 999;
+
+        for(int i = 0; i < gp.wolf.length; i++){
+            if(gp.wolf[i] != null){
+                //get bunny solid area position
+                bunny.solidArea.x = bunny.xpo +bunny.solidArea.x;
+                bunny.solidArea.y = bunny.ypo +bunny.solidArea.y;
+                // get the rewards solid area position
+                gp.wolf[i].solidArea.x = gp.wolf[i].xpo + gp.wolf[i].solidArea.x;
+                gp.wolf[i].solidArea.y = gp.wolf[i].ypo + gp.wolf[i].solidArea.y;
+
+                switch (bunny.direction){
+                    case "up":
+                        bunny.solidArea.y -= bunny.speed;
+                        if(bunny.solidArea.intersects(gp.wolf[i].solidArea)){
+                            bunny.IsCollison = true;
+                            index = i;
+                            }
+                        break;
+                    case "down":
+                        bunny.solidArea.y += bunny.speed;
+                        if(bunny.solidArea.intersects(gp.wolf[i].solidArea)){
+                            bunny.IsCollison = true;
+                            index = i;
+                        }
+                        break;
+                    case "left":
+                        bunny.solidArea.x -= bunny.speed;
+                        if(bunny.solidArea.intersects(gp.wolf[i].solidArea)){
+                            bunny.IsCollison = true;
+                            index = i;
+                        }
+                        break;
+                    case "right":
+                        bunny.solidArea.x += bunny.speed;
+                        if(bunny.solidArea.intersects(gp.wolf[i].solidArea)){
+                            bunny.IsCollison = true;
+                            index = i;
+                        }
+                        break;
+                }
+                bunny.solidArea.x = bunny.solidAreaDefaultX;
+                bunny.solidArea.y = bunny.solidAreaDefaultY;
+                gp.wolf[i].solidArea.x = gp.wolf[i].solidAreaDefaultX;
+                gp.wolf[i].solidArea.y = gp.wolf[i].solidAreaDefaultY;
+            }
+        }
+
+        return index;
+    }
+
 }

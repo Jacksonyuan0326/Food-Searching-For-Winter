@@ -136,6 +136,10 @@ public class GamePanel extends JPanel implements  Runnable{
         if(gameState == playState){
             //PLAY STATE
             bunny.update();
+            /** update for wolf */
+            for (int i = 0; i < wolf.length; i++){
+                wolf[i].update();
+            }
         }
         if(gameState == pauseState){
             //PAUSE STATE

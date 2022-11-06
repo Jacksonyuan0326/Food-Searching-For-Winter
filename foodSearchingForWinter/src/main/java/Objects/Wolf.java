@@ -19,7 +19,7 @@ public class Wolf extends Object{
         super(gp);
         name = "Wolf";
 
-        solidArea = new Rectangle(8, 16, 32, 28);
+        solidArea = new Rectangle(8, 8, 20, 20);
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
         getWolfImage();
@@ -52,26 +52,59 @@ public class Wolf extends Object{
     }
     public void setAction(){
         actionLockCounter++;
-        Random random = new Random();
-        int i = random.nextInt(100)+1;// pick up a number from 1 to 100
+        if (actionLockCounter == 120){
+            Random random = new Random();
+            int i = random.nextInt(100)+1;// pick up a number from 1 to 100
 
-        if(i <= 25){
-            direction = "up";
-        }
-        if(i > 25 && i <= 50){
-            direction = "down";
-        }
-        if(i > 50 && i <= 75){
-            direction = "right";
-        }
-        if(i > 75 && i <= 100){
-            direction = "right";
+            if(i <= 25){
+                direction = "up";
+            }
+            if(i > 25 && i <= 50){
+                direction = "down";
+            }
+            if(i > 50 && i <= 75){
+                direction = "right";
+            }
+            if(i > 75 && i <= 100){
+                direction = "right";
+            }
+
+            actionLockCounter = 0;
         }
 
-        actionLockCounter = 0;
     }
     public void update(){   
-        
+        setAction();
+        gp.checker.check(this);
+
+        if(IsCollison==false){
+            switch(direction){
+                case "up":
+                    ypo -= speed;
+                    break;
+                case "down":
+                    ypo += speed;
+                    break;
+                case "left":
+                    xpo -= speed;
+                    break;
+                case "right":
+                    xpo += speed;
+                    break;
+            }
+        }
+
+        spriteCounter ++;
+        //can adjust this 10 so the animation can be smoother
+        if (spriteCounter > 10){
+            if (spriteNum == 1){
+                spriteNum = 2;
+            } else if (spriteNum == 2) {
+                spriteNum =1;
+            }
+            //reset the counter
+            spriteCounter = 0;
+        }
 
     }
     public void draw(Graphics2D g2, GamePanel gp){
