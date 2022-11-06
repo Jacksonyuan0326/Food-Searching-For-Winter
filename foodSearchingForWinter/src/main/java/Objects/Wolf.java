@@ -13,6 +13,7 @@ import Objects.Object;
 
 public class Wolf extends Object{
     String name;
+    int actionLockCounter = 0;
     
     public Wolf(GamePanel gp){
         super(gp);
@@ -114,7 +115,12 @@ public class Wolf extends Object{
                 }
                 break;
         }
+<<<<<<< HEAD:foodSearchingForWinter/src/main/java/Objects/Wolf.java
         /** drawing the wolf */
         g2.drawImage(image, xpo, ypo, gp.wolftileWidth, gp.WolftileHeight, null);
+=======
+        //importing the pixel
+        g2.drawImage(image, xpo, ypo, gp.tileSize, gp.tileSize, null);//NEED FIX THERE
+>>>>>>> 3c0bc44100ada9a1a9eb2d4e69f8c5b73049e604:foodSearchingForWinter/src/main/java/Punishment/Wolf.java
     }
 }
