@@ -14,6 +14,7 @@ import Objects.Object;
 public class Wolf extends Object{
     GamePanel gp;
     String name;
+    int actionLockCounter = 0;
     
     public Wolf(GamePanel gp){
         super();
@@ -103,6 +104,6 @@ public class Wolf extends Object{
                 break;
         }
         //importing the pixel
-        g2.drawImage(image, xpo, ypo, gp., gp., null);
+        g2.drawImage(image, xpo, ypo, gp.tileSize, gp.tileSize, null);//NEED FIX THERE
     }
 }
