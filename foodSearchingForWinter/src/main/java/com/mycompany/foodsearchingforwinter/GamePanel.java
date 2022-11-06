@@ -1,7 +1,7 @@
 package com.mycompany.foodsearchingforwinter;
 
 import Objects.Bunny;
-import Punishment.Wolf;
+import Objects.Wolf;
 import Reward.All_Reward;
 import Tile.TileManager;
 
@@ -22,6 +22,11 @@ public class GamePanel extends JPanel implements  Runnable{
     public int bunnytileWidth = 16 * scaleFactor; // 48
     /**bunny tile height */
     public int bunnytileHeight = 20 * scaleFactor; //60
+
+    /** wolf tile size */
+    public int wolftileWidth = 16 * scaleFactor; // 48
+
+    public int WolftileHeight = 16 * scaleFactor; //48
 
     /**the window UI col */
     public final int maxScreenCol = 27; //origin 16
@@ -51,7 +56,9 @@ public class GamePanel extends JPanel implements  Runnable{
     Bunny bunny = new Bunny(this, keyControl);
     /**array of object belong rewards class */
     public All_Reward the_rewards[] = new All_Reward[20];
-    public Wolf wolf[] = new Wolf[5];
+
+    /** number of wollf **/
+    public Wolf wolf[] = new Wolf[2];
 
     //GAME STATE
     public int gameState;
@@ -155,6 +162,7 @@ public class GamePanel extends JPanel implements  Runnable{
                 }
             }
             bunny.draw(g2);
+
     
             ui.draw(g2);
             g2.dispose();}

@@ -12,7 +12,7 @@ public class spoiled_carrot extends All_Reward{
         name = "spoiled_carrot";
     
     try{
-        image = ImageIO.read(getClass().getResourceAsStream("/punish/spoiled_carrot.png"));
+        image = ImageIO.read(getClass().getResourceAsStream("/Punish/spoiled_carrot.png"));
     }catch(IOException e){
         e.printStackTrace();
     }

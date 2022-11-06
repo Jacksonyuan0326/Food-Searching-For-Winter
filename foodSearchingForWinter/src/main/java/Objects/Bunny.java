@@ -14,7 +14,6 @@ import java.util.Objects;
  * This is the bunny player class
  */
 public class Bunny extends Object{
-    GamePanel gp;
     Control keyControl;
 
     /** the total score player has */
@@ -24,15 +23,17 @@ public class Bunny extends Object{
     /** the total medkit player gets*/
     public int medkitNum = 0;
 
+    /** the health of the bunny **/
+    public int health = 100;
+
     /**The constructor sets basic position of player bunny
      * and read the bunny image
      * @param gp need GamePanel object
      * @param keyControl need Control object that manages the keyborad movement
      */
     public Bunny (GamePanel gp, Control keyControl){
-        this.gp = gp;
+        super(gp);
         this.keyControl = keyControl;
-
 
         //rectangle = new Rectangle(0,0,48,60); //didn't use
         //we should use this because we need the collision box

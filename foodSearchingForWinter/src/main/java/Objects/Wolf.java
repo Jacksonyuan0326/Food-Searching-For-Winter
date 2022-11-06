@@ -1,4 +1,4 @@
-package Punishment;
+package Objects;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -12,24 +12,33 @@ import com.mycompany.foodsearchingforwinter.GamePanel;
 import Objects.Object;
 
 public class Wolf extends Object{
-    GamePanel gp;
     String name;
     
     public Wolf(GamePanel gp){
-        super();
-        this.gp = gp;
+        super(gp);
         name = "Wolf";
-        speed = 1;
 
-        solidArea.x = 3;
-        solidArea.y = 18;
-        solidArea.width = 42;
-        solidArea.height = 30;
+        solidArea.x = 8;
+        solidArea.y = 16;
+        solidArea.width = 32;
+        solidArea.height = 28;
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
+        getWolfImage();
     }
 
-    public void getImage() throws IOException{
+    public void setWolfBasic(){
+        xpo = 50;
+        ypo = 50;
+        speed = 2;
+        direction = "down";
+    }
+
+    /**
+     * This method is the pixel image getter for the wolf
+     */
+    public void getWolfImage() {
+        try {
             up1 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/Wolf/up1.png")));
             up2 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/Wolf/up2.png")));
             down1 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/Wolf/down1.png")));
@@ -38,6 +47,9 @@ public class Wolf extends Object{
             right2 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/Wolf/right2.png")));
             left1 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/Wolf/left1.png")));
             left2 = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/Wolf/left2.png")));
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
     public void setAction(){
         actionLockCounter++;
@@ -102,7 +114,7 @@ public class Wolf extends Object{
                 }
                 break;
         }
-        //importing the pixel
-        g2.drawImage(image, xpo, ypo, gp., gp., null);
+        /** drawing the wolf */
+        g2.drawImage(image, xpo, ypo, gp.wolftileWidth, gp.WolftileHeight, null);
     }
 }
