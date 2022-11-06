@@ -1,6 +1,6 @@
 package Objects;
 
-import java.awt.Graphics2D;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Objects;
@@ -19,13 +19,11 @@ public class Wolf extends Object{
         super(gp);
         name = "Wolf";
 
-        solidArea.x = 8;
-        solidArea.y = 16;
-        solidArea.width = 32;
-        solidArea.height = 28;
+        solidArea = new Rectangle(8, 16, 32, 28);
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
         getWolfImage();
+        setWolfBasic();
     }
 
     public void setWolfBasic(){
@@ -115,12 +113,8 @@ public class Wolf extends Object{
                 }
                 break;
         }
-<<<<<<< HEAD:foodSearchingForWinter/src/main/java/Objects/Wolf.java
+
         /** drawing the wolf */
         g2.drawImage(image, xpo, ypo, gp.wolftileWidth, gp.WolftileHeight, null);
-=======
-        //importing the pixel
-        g2.drawImage(image, xpo, ypo, gp.tileSize, gp.tileSize, null);//NEED FIX THERE
->>>>>>> 3c0bc44100ada9a1a9eb2d4e69f8c5b73049e604:foodSearchingForWinter/src/main/java/Punishment/Wolf.java
     }
 }

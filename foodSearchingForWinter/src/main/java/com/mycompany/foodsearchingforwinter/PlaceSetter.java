@@ -1,5 +1,6 @@
 package com.mycompany.foodsearchingforwinter;
 
+import Objects.Wolf;
 import Reward.Door;
 import Reward.Reward_carrot;
 import Reward.Reward_medkit;
@@ -78,6 +79,16 @@ public class PlaceSetter {
 
 
 
+    }
+
+    public void setWolf(){
+        gp.wolf[0] = new Wolf(gp);
+        gp.wolf[0].xpo = 50;
+        gp.wolf[0].ypo = 50;
+
+        gp.wolf[1] = new Wolf(gp);
+        gp.wolf[1].xpo = 50;
+        gp.wolf[1].ypo = 50;
     }
     
 }

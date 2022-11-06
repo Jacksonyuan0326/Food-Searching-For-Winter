@@ -83,6 +83,7 @@ public class GamePanel extends JPanel implements  Runnable{
      */
     public void setUpGame(){
         theSetter.setThing();
+        theSetter.setWolf();
         gameState = titleState;
     }
     /**
@@ -161,7 +162,17 @@ public class GamePanel extends JPanel implements  Runnable{
                     the_rewards[i].draw(g2, this);
                 }
             }
+
+            /** draw bunny */
             bunny.draw(g2);
+
+            /** draw wolf */
+            for (int i = 0; i < wolf.length; i++){
+                if (wolf[i] != null){
+                    wolf[i].draw(g2, this);
+                }
+            }
+
 
     
             ui.draw(g2);
