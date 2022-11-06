@@ -63,12 +63,11 @@ public class Wolf extends Object{
                 direction = "down";
             }
             if(i > 50 && i <= 75){
+                direction = "left";
+            }
+            if(i > 75 && i < 100){
                 direction = "right";
             }
-            if(i > 75 && i <= 100){
-                direction = "right";
-            }
-
             actionLockCounter = 0;
         }
 
@@ -77,7 +76,7 @@ public class Wolf extends Object{
         setAction();
         gp.checker.check(this);
 
-        if(IsCollison==false){
+        if(!IsCollison){
             switch(direction){
                 case "up":
                     ypo -= speed;
@@ -94,6 +93,10 @@ public class Wolf extends Object{
             }
         }
 
+        if (IsCollison){
+            //wolf movement method here to bounce back from the collision
+        }
+
         spriteCounter ++;
         //can adjust this 10 so the animation can be smoother
         if (spriteCounter > 10){
@@ -105,6 +108,7 @@ public class Wolf extends Object{
             //reset the counter
             spriteCounter = 0;
         }
+
 
     }
     public void draw(Graphics2D g2, GamePanel gp){
