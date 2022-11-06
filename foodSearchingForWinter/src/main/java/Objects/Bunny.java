@@ -34,7 +34,7 @@ public class Bunny extends Object{
 
         //rectangle = new Rectangle(0,0,48,60); //didn't use
         //we should use this because we need the collision box
-        solidArea = new Rectangle(8 , 8, 32 , 32);
+        solidArea = new Rectangle(8 , 5, 32 , 30);
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
         setBunnyBasic();
