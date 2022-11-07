@@ -115,15 +115,15 @@ public class Bunny extends Object{
                         break;
                     case "down":
                         ypo += speed;
-                        random_carrot1();
+                        random_medkit1();
                         break;
                     case "left":
                         xpo -= speed;
-                        random_carrot2();
+                        random_medkit2();
                         break;
                     case "right":
                         xpo += speed;
-                        random_carrot3();
+                        random_medkit3();
                         break;
                 }
                     
@@ -241,8 +241,10 @@ public class Bunny extends Object{
         g2.drawImage(image, xpo, ypo, gp.bunnytileWidth, gp.bunnytileHeight, null);
 
     }
-
-    private void random_carrot1(){
+    /**
+     * funstion to set medkit position
+     */
+    private void random_medkit1(){
         if(ypo<300 && xpo<240){ //change------------- random spoiled carrot
             gp.the_rewards[12]=new Reward_medkit();
             gp.the_rewards[12].x = 7*gp.tileSize;
@@ -264,7 +266,8 @@ public class Bunny extends Object{
         }
     }
 
-    private void random_carrot2(){
+    /**function to set random medkit position */
+    private void random_medkit2(){
         if(ypo<300 && xpo>500 && xpo<1000){ //change------------- random spoiled carrot
             //gp.the_rewards[13]=new Reward_medkit();
             //gp.the_rewards[13].x = 16*gp.tileSize;
@@ -285,7 +288,8 @@ public class Bunny extends Object{
         }
     }
 
-    private void random_carrot3(){
+    /** function to set random medkit position */
+    private void random_medkit3(){
         if(xpo>700 && xpo<900){ //change------------- random spoiled carrot
             gp.the_rewards[6] = null;
             //gp.the_rewards[13] =null;

@@ -65,6 +65,7 @@ public class GamePanel extends JPanel implements  Runnable{
     public final int titleState = 0;
     public final int playState = 1;
     public final int pauseState = 2;
+    public final int endState = 4;
     //set the drop in position
     int xpo = 100;
     int ypo = 100;
