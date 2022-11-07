@@ -104,7 +104,7 @@ public class UI {
                 x = gp.screenWidth/2 - textLength/2;
                 y = gp.screenHeight/2;
     
-                g2.drawString(text, x, y);
+                g2.drawString(text, x, y);   
                 gp.gameThread = null;
             }
             else{        
@@ -141,6 +141,7 @@ public class UI {
         }
        
     }
+    /**draw the title screen */
     public void drawTitle(){
         //TITLE SCREEN
         g2.setColor(new Color(60,110,70));
@@ -197,10 +198,8 @@ public class UI {
             g2.drawString(">>", x-gp.tileSize*2,y);
         }
 
-
-
-
     }
+    /**make the game pause */
     public void pauseScreen(){
         this.g2 = g2;
         g2.setFont(arial_80B);

@@ -5,7 +5,9 @@ import Objects.Object;
 public class CollisonCheck {
     GamePanel gp;
     
-    /**initialize the GamePanel */
+    /**initialize the GamePanel 
+    * @param gp gamepanel
+    */
     public CollisonCheck(GamePanel gp){
         this.gp = gp;
     }

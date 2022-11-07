@@ -15,11 +15,14 @@ public class Control implements KeyListener {
     public boolean isUp, isDown, isRight, isLeft, isIdle;
     GamePanel gp;
 
+    /**takes in gamepanel */
     public Control(GamePanel gp){
         this.gp = gp;
     }
+    /**default do nothing */
     public Control() {
     }
+    /**for key board handling */
     @Override
     public void keyTyped(KeyEvent e) {
 
