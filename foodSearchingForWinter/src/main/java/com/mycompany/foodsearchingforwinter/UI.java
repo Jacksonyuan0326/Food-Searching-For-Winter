@@ -105,7 +105,7 @@ public class UI {
                 int x;
                 int y;
 
-                text = "oh no! You loss!";
+                text = "oh no! You lost!";
                 textLength =(int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
 
                 x = gp.screenWidth/2 - textLength/2;

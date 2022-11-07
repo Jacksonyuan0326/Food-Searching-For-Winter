@@ -54,6 +54,8 @@ public class Control implements KeyListener {
             if(code == KeyEvent.VK_ENTER){
                 if(gp.ui.commandNum == 0){ // user begins playing the game
                     gp.gameState = gp.playState;
+                    gp.ui.gameLoss = false;
+                    gp.restart();
                 }
                 if(gp.ui.commandNum == 1){ // do nothing
                     
@@ -110,8 +112,13 @@ public class Control implements KeyListener {
         }
         if(code == KeyEvent.VK_ENTER){
             if(gp.ui.commandNum == 0){
-                gp.gameState = gp.playState;
-                gp.restart();
+                if(gp.gameState == gp.endState){
+                    gp.gameState = gp.playState;
+                    
+                    gp.restart();
+                    gp.ui.gameLoss = false;
+                    System.out.println("gamestate is " + gp.gameState);
+                }
             }
             else if(gp.ui.commandNum == 1){
                 gp.gameState = gp.titleState;
