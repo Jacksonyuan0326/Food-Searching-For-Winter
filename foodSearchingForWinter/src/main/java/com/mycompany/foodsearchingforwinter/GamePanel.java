@@ -191,6 +191,7 @@ public class GamePanel extends JPanel implements  Runnable{
     /**This method will restart the game for game over state
      */
     public void restart(){
+        
         bunny.score = 0;
         bunny.setBunnyBasic();
         theSetter.setThing();

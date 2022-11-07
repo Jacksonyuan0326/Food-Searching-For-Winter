@@ -55,7 +55,9 @@ public class Control implements KeyListener {
                 if(gp.ui.commandNum == 0){ // user begins playing the game
                     gp.gameState = gp.playState;
                     gp.ui.gameLoss = false;
+                    gp.ui.play_time = 0;
                     gp.restart();
+                    
                 }
                 if(gp.ui.commandNum == 1){ // do nothing
                     
@@ -114,7 +116,7 @@ public class Control implements KeyListener {
             if(gp.ui.commandNum == 0){
                 if(gp.gameState == gp.endState){
                     gp.gameState = gp.playState;
-                    
+                    gp.ui.play_time = 0;
                     gp.restart();
                     gp.ui.gameLoss = false;
                     System.out.println("gamestate is " + gp.gameState);
