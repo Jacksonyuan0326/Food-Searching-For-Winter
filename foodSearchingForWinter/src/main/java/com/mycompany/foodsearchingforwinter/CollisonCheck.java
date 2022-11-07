@@ -141,7 +141,11 @@ public class CollisonCheck {
 
         return index;
     }
-
+    /**This method will find and check whether the bunny meet the wolf
+     * @param bunny The user
+     * @param wolf The move punishment
+     * @return the index of the wolf
+     */
     public int checkWolf(Object bunny, Object[] wolf){
         int index = 999;
 
