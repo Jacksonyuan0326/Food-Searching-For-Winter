@@ -192,9 +192,10 @@ public class GamePanel extends JPanel implements  Runnable{
      */
     public void restart(){
         
-
+        bunny.score = 0;
         bunny.setBunnyBasic();
-        setUpGame();
-        startGameThread();
+        theSetter.setThing();
+        theSetter.setWolf();
+        
     }
 }
