@@ -19,7 +19,7 @@ public class Wolf extends Object{
         super(gp);
         name = "Wolf";
 
-        solidArea = new Rectangle(8, 8, 20, 20);
+        solidArea = new Rectangle(8, 3, 32, 30);
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
         getWolfImage();
@@ -27,8 +27,6 @@ public class Wolf extends Object{
     }
 
     public void setWolfBasic(){
-        xpo = 50;
-        ypo = 50;
         speed = 2;
         direction = "down";
     }
@@ -52,7 +50,7 @@ public class Wolf extends Object{
     }
     public void setAction(){
         actionLockCounter++;
-        if (actionLockCounter == 120){
+        if (actionLockCounter == 60){
             Random random = new Random();
             int i = random.nextInt(100)+1;// pick up a number from 1 to 100
 
@@ -74,6 +72,8 @@ public class Wolf extends Object{
     }
     public void update(){   
         setAction();
+
+        IsCollison = false; //change start
         gp.checker.check(this);
 
         if(!IsCollison){
@@ -93,9 +93,6 @@ public class Wolf extends Object{
             }
         }
 
-        if (IsCollison){
-            //wolf movement method here to bounce back from the collision
-        }
 
         spriteCounter ++;
         //can adjust this 10 so the animation can be smoother

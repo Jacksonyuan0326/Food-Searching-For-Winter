@@ -155,40 +155,31 @@ public class CollisonCheck {
                 switch (bunny.direction){
                     case "up":
                         bunny.solidArea.y -= bunny.speed;
-                        if(bunny.solidArea.intersects(gp.wolf[i].solidArea)){
-                            bunny.IsCollison = true;
-                            index = i;
-                            }
                         break;
                     case "down":
                         bunny.solidArea.y += bunny.speed;
-                        if(bunny.solidArea.intersects(gp.wolf[i].solidArea)){
-                            bunny.IsCollison = true;
-                            index = i;
-                        }
                         break;
                     case "left":
                         bunny.solidArea.x -= bunny.speed;
-                        if(bunny.solidArea.intersects(gp.wolf[i].solidArea)){
-                            bunny.IsCollison = true;
-                            index = i;
-                        }
                         break;
                     case "right":
                         bunny.solidArea.x += bunny.speed;
-                        if(bunny.solidArea.intersects(gp.wolf[i].solidArea)){
-                            bunny.IsCollison = true;
-                            index = i;
-                        }
                         break;
                 }
+
+                if(bunny.solidArea.intersects(gp.wolf[i].solidArea)){
+                    if (wolf[i] != bunny) {
+                        bunny.IsCollison = true;
+                        index = i;
+                    }
+                }
+
                 bunny.solidArea.x = bunny.solidAreaDefaultX;
                 bunny.solidArea.y = bunny.solidAreaDefaultY;
                 gp.wolf[i].solidArea.x = gp.wolf[i].solidAreaDefaultX;
                 gp.wolf[i].solidArea.y = gp.wolf[i].solidAreaDefaultY;
             }
         }
-
         return index;
     }
 

@@ -87,8 +87,12 @@ public class PlaceSetter {
         gp.wolf[0].ypo = 50;
 
         gp.wolf[1] = new Wolf(gp);
-        gp.wolf[1].xpo = 150;
-        gp.wolf[1].ypo = 150;
+        gp.wolf[1].xpo = 350;
+        gp.wolf[1].ypo = 400;
+
+        gp.wolf[2] = new Wolf(gp);
+        gp.wolf[2].xpo = 800;
+        gp.wolf[2].ypo = 400;
     }
     
 }

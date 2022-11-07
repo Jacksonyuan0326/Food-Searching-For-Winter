@@ -43,7 +43,7 @@ public class GamePanel extends JPanel implements  Runnable{
 
     //set up FPS
     int FPS = 60;
-    TileManager tileM = new TileManager(this);
+    public TileManager tileM = new TileManager(this);
     Thread gameThread;
     /**check collision*/
     public CollisonCheck checker = new CollisonCheck(this); //change
@@ -58,7 +58,7 @@ public class GamePanel extends JPanel implements  Runnable{
     public All_Reward the_rewards[] = new All_Reward[20];
 
     /** number of wollf **/
-    public Wolf wolf[] = new Wolf[2];
+    public Wolf wolf[] = new Wolf[3];
 
     //GAME STATE
     public int gameState;
