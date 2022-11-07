@@ -7,6 +7,7 @@ import java.text.DecimalFormat;
 import Reward.Reward_carrot;
 import Reward.Reward_medkit;
 import Title.MainScreen;
+import Title.Help;
 
 import javax.swing.text.AttributeSet.FontAttribute;
 
@@ -18,6 +19,7 @@ public class UI {
     BufferedImage carrotImage;
     BufferedImage medkitImage;
     BufferedImage mainScreenImage;
+    BufferedImage helpScreenImage;
     /**for checking if need to display image */
     public boolean messageOn = false;
     /**the string you want to display on screen */
@@ -50,6 +52,9 @@ public class UI {
         medkitImage = medkit.image;
         MainScreen mainScreen = new MainScreen();
         mainScreenImage = mainScreen.image;
+        Help helpScreen = new Help();
+        helpScreenImage = helpScreen.image;
+        
     }
     /**
      * This method gets the text you want to display
@@ -204,7 +209,6 @@ public class UI {
         //TITLE SCREEN
         g2.drawImage(mainScreenImage, 0, 0, null);
 
-
         g2.setFont(g2.getFont().deriveFont(Font.BOLD, 96F));
         String text = "Food Searching For Winter";
         int x = getCentreX(text);
@@ -236,7 +240,7 @@ public class UI {
             g2.drawString(">>", x-gp.tileSize*2,y);
         }
 
-        //LOAD GAME option
+        //HELP option
         g2.setColor(Color.yellow);
         text = "HELP";
         x = getCentreX(text);
@@ -244,6 +248,7 @@ public class UI {
         g2.drawString(text, x, y);
         if(commandNum == 1){
             g2.drawString(">>", x-gp.tileSize*2,y);
+            g2.drawImage(helpScreenImage, 850, 350, gp.tileSize*8, gp.tileSize*8, null); // draw the help window image
         }
 
         //EXIT GAME option
@@ -256,6 +261,10 @@ public class UI {
             g2.drawString(">>", x-gp.tileSize*2,y);
         }
 
+    }
+    /**pulls up the help menu*/
+    public void helpScreen(){
+        g2.drawImage(helpScreenImage, 500, 200, null);
     }
     /**make the game pause */
     public void pauseScreen(){

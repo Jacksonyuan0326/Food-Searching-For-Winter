@@ -50,14 +50,15 @@ public class Control implements KeyListener {
                     gp.ui.commandNum = 0;
                 }
             }
+           
             if(code == KeyEvent.VK_ENTER){
-                if(gp.ui.commandNum == 0){
+                if(gp.ui.commandNum == 0){ // user begins playing the game
                     gp.gameState = gp.playState;
                 }
-                if(gp.ui.commandNum == 1){
-
+                if(gp.ui.commandNum == 1){ // do nothing
+                    
                 }
-                if(gp.ui.commandNum == 2){
+                if(gp.ui.commandNum == 2){ // user leaves the game
                     System.exit(0);
                 }
             }
