@@ -2,6 +2,7 @@ package com.mycompany.foodsearchingforwinter;
 
 import Objects.Bunny;
 import Objects.Wolf;
+import Pathfinding.PathFinder;
 import Reward.All_Reward;
 import Tile.TileManager;
 
@@ -53,12 +54,15 @@ public class GamePanel extends JPanel implements  Runnable{
     /**User Interface*/
     public UI ui = new UI(this);
     /**adding the bunny player*/
-    Bunny bunny = new Bunny(this, keyControl);
+    public Bunny bunny = new Bunny(this, keyControl);
     /**array of object belong rewards class */
     public All_Reward the_rewards[] = new All_Reward[20];
 
     /** number of wollf **/
     public Wolf wolf[] = new Wolf[3];
+
+    /** pathfinding engine */
+    public PathFinder Path = new PathFinder(this);
 
     //GAME STATE
     public int gameState;
