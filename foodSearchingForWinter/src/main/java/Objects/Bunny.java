@@ -109,7 +109,7 @@ public class Bunny extends Object{
                 switch(direction){
                     case "up":
                         ypo -= speed;
-                        random_carrot2();
+                        //random_carrot2();
                         break;
                     case "down":
                         ypo += speed;
@@ -117,6 +117,7 @@ public class Bunny extends Object{
                         break;
                     case "left":
                         xpo -= speed;
+                        random_carrot2();
                         break;
                     case "right":
                         xpo += speed;
@@ -243,30 +244,38 @@ public class Bunny extends Object{
             gp.the_rewards[6].x = 3*gp.tileSize;
             gp.the_rewards[6].y = 14*gp.tileSize;
         }
+        else if(ypo<150 && xpo>500 && xpo<1000){
+            gp.the_rewards[13]=new Reward_medkit();
+            gp.the_rewards[13].x = 16*gp.tileSize;
+            gp.the_rewards[13].y = 5*gp.tileSize;
+        }
     }
 
     private void random_carrot2(){
         if(ypo<300 && xpo>500 && xpo<1000){ //change------------- random spoiled carrot
-            gp.the_rewards[13]=new Reward_medkit();
-            gp.the_rewards[13].x = 14*gp.tileSize;
-            gp.the_rewards[13].y = 5*gp.tileSize;
+            //gp.the_rewards[13]=new Reward_medkit();
+            //gp.the_rewards[13].x = 16*gp.tileSize;
+            //gp.the_rewards[13].y = 4*gp.tileSize;
 
             gp.the_rewards[7] = null;
         }
-        else if (ypo>300 && ypo<576 && xpo>500){
+        else if (ypo>300 && ypo<400 && xpo>500){
             gp.the_rewards[12]=null;
             gp.the_rewards[13] = null;
 
-            gp.the_rewards[7] = new Reward_medkit();
-            gp.the_rewards[7].x = 20*gp.tileSize;
-            gp.the_rewards[7].y = 7*gp.tileSize;
+            //gp.the_rewards[7] = new Reward_medkit();
+            //gp.the_rewards[7].x = 20*gp.tileSize;
+            //gp.the_rewards[7].y = 7*gp.tileSize;
+        }
+        else if (xpo>500){
+            gp.the_rewards[7]=null;
         }
     }
 
     private void random_carrot3(){
-        if(xpo>700 ){ //change------------- random spoiled carrot
+        if(xpo>700 && xpo<900){ //change------------- random spoiled carrot
             gp.the_rewards[6] = null;
-            gp.the_rewards[13] =null;
+            //gp.the_rewards[13] =null;
 
             gp.the_rewards[14] = new Reward_medkit();
             gp.the_rewards[14].x = 20*gp.tileSize;
