@@ -78,7 +78,7 @@ public class Control implements KeyListener {
                 isRight = true;
             }
         }
-        //PA 
+        //PAUSE STATE
             if (code == KeyEvent.VK_P) {
                 pauseState();
         }           
@@ -110,6 +110,7 @@ public class Control implements KeyListener {
         if(code == KeyEvent.VK_ENTER){
             if(gp.ui.commandNum == 0){
                 gp.gameState = gp.playState;
+                gp.restart();
             }
             else if(gp.ui.commandNum == 1){
                 gp.gameState = gp.titleState;

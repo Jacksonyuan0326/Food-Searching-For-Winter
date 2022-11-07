@@ -146,6 +146,9 @@ public class UI {
         }
 
     }
+    /**This method will draw the Game over Screen when bunny die
+     * and see two option "Retry" and "Quit"
+     */
     public void drawGameOverScreen(){
         g2.setColor(new Color(0,0,0,150));
         g2.fillRect(0,0,gp.screenWidth,gp.screenHeight);

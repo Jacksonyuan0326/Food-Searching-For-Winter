@@ -184,4 +184,13 @@ public class GamePanel extends JPanel implements  Runnable{
             g2.dispose();}
   
     }
+    /**This method will restart the game for game over state
+     */
+    public void restart(){
+        
+
+        bunny.setBunnyBasic();
+        setUpGame();
+        startGameThread();
+    }
 }

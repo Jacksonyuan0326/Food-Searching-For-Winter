@@ -81,7 +81,8 @@ public class PlaceSetter {
 
 
     }
-
+    /**This method will set the position of wolf
+     */
     public void setWolf(){
         gp.wolf[0] = new Wolf(gp);
         gp.wolf[0].xpo = 50;
