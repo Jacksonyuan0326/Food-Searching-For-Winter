@@ -77,13 +77,102 @@ public class PathFinder {
             if (gp.tileM.tile[tileNum].collision == true){
                 node[col][row].solid = true;
             }
+            getCost(node[col][row]);
+            col++;
+            if (col == gp.maxScreenCol){
+                col = 0;
+                row++;
+            }
         }
-        //getDistance(node[col][row]);
-        col++;
+    }
+
+    public void getCost(Node node){
+        int xDistant = Math.abs(node.col - startNode.col);
+        int yDistant = Math.abs(node.row - startNode.row);
+        node.gCost = xDistant + yDistant;
+
+        xDistant = Math.abs(node.col - startNode.col);
+        yDistant = Math.abs(node.row - startNode.row);
+        node.hCost = xDistant + yDistant;
+
+        node.fCost = node.hCost + node.gCost;
+
 
     }
 
+    public boolean search(){
+        while (reachedGoal == false && step < 500){
+            int col = currentNode.col;
+            int row = currentNode.row;
 
+            // to check the current node and remove from the unchecked list
+            currentNode.checked = true;
+            openList.remove(currentNode);
+
+            // open the up node
+            if (row - 1 >= 0 ){
+                openNode(node[col][row - 1]);
+            }
+            // left node
+            if (col - 1 >= 0 ){
+                openNode(node[col - 1][row]);
+            }
+            // down node
+            if (row + 1 < gp.maxScreenRow ){
+                openNode(node[col][row + 1]);
+            }
+            //right node
+            if (col + 1 < gp.maxScreenCol ){
+                openNode(node[col + 1][row]);
+            }
+
+            /** to find the best path */
+            int bestNodeIndex = 0 ;
+            int bestNodefCost = 999;
+            for (int i = 0; i < openList.size(); i++){
+                //compare f cost
+                if (openList.get(i).fCost < bestNodefCost){
+                    bestNodeIndex = i;
+                    bestNodefCost = openList.get(i).fCost;
+                }
+                //if F cost is the same, what about G cost
+                else if (openList.get(i).fCost == bestNodefCost){
+                    if (openList.get(i).gCost < openList.get(bestNodeIndex).gCost){
+                        bestNodeIndex = i;
+                    }
+                }
+            }
+            if (openList.size() == 0){
+                break;
+            }
+
+            //after the loop, openlist[bestNodeIndex] is the next step => current node
+            currentNode = openList.get(bestNodeIndex);
+
+            if (currentNode == goalNode) {
+                reachedGoal = true;
+                pathTracking();
+            }
+            step++;
+        }
+        return reachedGoal;
+    }
+
+    public void pathTracking() {
+        Node current = goalNode;
+        while (current != startNode){
+            pathList.add(0, current);
+            current = current .parent;
+        }
+    }
+
+    public void openNode(Node node){
+        if (node.open == false && node.checked == false && node.solid == false){
+            node.open = true;
+            node.parent = currentNode;
+            openList.add(node);
+        }
+    }
 }
 
 

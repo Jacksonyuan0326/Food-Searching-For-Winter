@@ -31,8 +31,69 @@ public class Object {
     /**check character collision */
     public boolean IsCollison = false;
 
+    /** for pathfinding */
+    public boolean onPath = false;
+
     public Object(GamePanel gp){
         this.gp = gp;
     }
+
+    public void searchShortestPath(int goalCol, int goalRow){
+        int startCol = gp.bunny.xpo / gp.tileSize;
+        System.out.println("startcol = " + startCol);
+        int startRow = gp.bunny.ypo / gp.tileSize;
+        System.out.println("startrow = " + startRow);
+
+        gp.Path.setNode(startCol, startRow, goalCol, goalRow, this);
+
+        if (gp.Path.search() == true){
+            int nextX  = gp.Path.pathList.get(0).col * gp.tileSize;
+            int nextY  = gp.Path.pathList.get(0).row * gp.tileSize;
+
+            //object position
+            int objLeftX = gp.bunny.xpo;
+            int objRightX = gp.bunny.xpo + gp.bunny.solidArea.width;
+            int objTopY = gp.bunny.ypo;
+            int objButtonY = gp.bunny.ypo + gp.bunny.solidArea.height;
+
+            if (objTopY > nextY && objLeftX >= nextX && objRightX < nextX + gp.tileSize){
+                direction = "up";
+            }
+            else if (objTopY < nextY && objLeftX >= nextX && objRightX < nextX + gp.tileSize){
+                direction = "down";
+            }
+            else if (objTopY >= nextY && objButtonY < nextY + gp.tileSize){
+                if (objLeftX > nextX){
+                    direction = "left";
+                }
+                if (objLeftX < nextX){
+                    direction = "right";
+                }
+            }
+            else if (objTopY > nextY && objLeftX > nextX){
+                direction = "up";
+            }
+            else if (objTopY > nextY && objLeftX < nextX){
+                direction = "up";
+            }
+            else if (objTopY < nextY && objLeftX > nextX){
+                direction = "down";
+            }
+            else if (objTopY < nextY && objLeftX < nextX){
+                direction = "down";
+            }
+        }
+
+        /**
+        //when it reaches the goal, stop searching for path
+        int nextCol = gp.Path.pathList.get(0).col;
+        int nextRow = gp.Path.pathList.get(0).row;
+        if (nextCol == goalCol && nextRow == goalRow){
+            onPath = false;
+        }
+         */
+    }
+
+
 
 }

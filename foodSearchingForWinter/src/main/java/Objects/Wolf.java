@@ -49,30 +49,39 @@ public class Wolf extends Object{
         }
     }
     public void setAction(){
-        actionLockCounter++;
-        if (actionLockCounter == 60){
-            Random random = new Random();
-            int i = random.nextInt(100)+1;// pick up a number from 1 to 100
+        if (onPath == true){
 
-            if(i <= 25){
-                direction = "up";
+            int goalCol = (gp.bunny.xpo)/gp.tileSize;
+            System.out.println(goalCol);
+            int goalRow = (gp.bunny.ypo)/gp.tileSize;
+            System.out.println(goalRow);
+            searchShortestPath(goalCol, goalRow);
+
+        }else {
+            actionLockCounter++;
+            if (actionLockCounter == 60) {
+                Random random = new Random();
+                int i = random.nextInt(100) + 1;// pick up a number from 1 to 100
+
+                if (i <= 25) {
+                    direction = "up";
+                }
+                if (i > 25 && i <= 50) {
+                    direction = "down";
+                }
+                if (i > 50 && i <= 75) {
+                    direction = "left";
+                }
+                if (i > 75 && i < 100) {
+                    direction = "right";
+                }
+                actionLockCounter = 0;
             }
-            if(i > 25 && i <= 50){
-                direction = "down";
-            }
-            if(i > 50 && i <= 75){
-                direction = "left";
-            }
-            if(i > 75 && i < 100){
-                direction = "right";
-            }
-            actionLockCounter = 0;
         }
 
     }
     public void update(){   
         setAction();
-
         IsCollison = false; //change start
         gp.checker.check(this);
 
@@ -93,7 +102,6 @@ public class Wolf extends Object{
             }
         }
 
-
         spriteCounter ++;
         //can adjust this 10 so the animation can be smoother
         if (spriteCounter > 10){
@@ -104,6 +112,15 @@ public class Wolf extends Object{
             }
             //reset the counter
             spriteCounter = 0;
+        }
+
+        int xDistance = Math.abs(gp.bunny.xpo - xpo);
+        int yDistance = Math.abs(gp.bunny.ypo - ypo);
+        if (onPath == false && xDistance <= 100  && yDistance <= 100){
+            onPath = true;
+        }
+        if (onPath == true && xDistance > 100  && yDistance > 100) {
+            onPath = false;
         }
 
 
