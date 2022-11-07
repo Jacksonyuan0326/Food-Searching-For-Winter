@@ -6,6 +6,7 @@ import java.text.DecimalFormat;
 
 import Reward.Reward_carrot;
 import Reward.Reward_medkit;
+import Title.MainScreen;
 
 import javax.swing.text.AttributeSet.FontAttribute;
 
@@ -16,6 +17,7 @@ public class UI {
     Font arial_40, arial_80B;
     BufferedImage carrotImage;
     BufferedImage medkitImage;
+    BufferedImage mainScreenImage;
     /**for checking if need to display image */
     public boolean messageOn = false;
     /**the string you want to display on screen */
@@ -46,6 +48,8 @@ public class UI {
         carrotImage = carrot.image;
         Reward_medkit medkit = new Reward_medkit();
         medkitImage = medkit.image;
+        MainScreen mainScreen = new MainScreen();
+        mainScreenImage = mainScreen.image;
     }
     /**
      * This method gets the text you want to display
@@ -195,8 +199,8 @@ public class UI {
     /**draw the title screen */
     public void drawTitle(){
         //TITLE SCREEN
-        g2.setColor(new Color(60,110,70));
-        g2.fillRect(0, 0, gp.screenWidth, gp.screenHeight);
+        g2.drawImage(mainScreenImage, 0, 0, null);
+
 
         g2.setFont(g2.getFont().deriveFont(Font.BOLD, 96F));
         String text = "Food Searching For Winter";
@@ -231,7 +235,7 @@ public class UI {
 
         //LOAD GAME option
         g2.setColor(Color.yellow);
-        text = "LOAD GAME";
+        text = "HELP";
         x = getCentreX(text);
         y += gp.tileSize*2;
         g2.drawString(text, x, y);
@@ -240,7 +244,7 @@ public class UI {
         }
 
         //EXIT GAME option
-        g2.setColor(Color.black);
+        g2.setColor(Color.gray);
         text = "EXIT GAME";
         x = getCentreX(text);
         y += gp.tileSize*2;
