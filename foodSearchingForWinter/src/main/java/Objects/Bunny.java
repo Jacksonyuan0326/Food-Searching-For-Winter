@@ -14,7 +14,6 @@ import java.util.Objects;
  * This is the bunny player class
  */
 public class Bunny extends Object{
-    GamePanel gp;
     Control keyControl;
 
     /** the total score player has */
@@ -30,13 +29,12 @@ public class Bunny extends Object{
      * @param keyControl need Control object that manages the keyborad movement
      */
     public Bunny (GamePanel gp, Control keyControl){
-        this.gp = gp;
+        super(gp);
         this.keyControl = keyControl;
-
 
         //rectangle = new Rectangle(0,0,48,60); //didn't use
         //we should use this because we need the collision box
-        solidArea = new Rectangle(8 , 8, 32 , 32);
+        solidArea = new Rectangle(8 , 5, 32 , 30);
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
         setBunnyBasic();
@@ -103,6 +101,10 @@ public class Bunny extends Object{
             //check rewards collision
             int rewardsIndex = gp.checker.checkRewards(this, true);
             pickUpRewards(rewardsIndex);
+
+            /** check wolf collision */
+            int wolfIndex = gp.checker.checkWolf(this, gp.wolf);
+            bunnyDie(wolfIndex);
 
             //if no collison happen, then move
             if(IsCollison==false){
@@ -181,6 +183,17 @@ public class Bunny extends Object{
             }
         }
     }
+
+    public void bunnyDie(int index){
+        if ( index != 999){
+            score -= 50;
+            if (score<0){
+                gp.ui.gameLoss = true;
+            }
+            System.out.println("Bunny touched the wolf, bunny dies!\n");
+        }
+    }
+
     /**
      * This method used to import and draw the image
      * @param g2 the grahics use to draw images on map

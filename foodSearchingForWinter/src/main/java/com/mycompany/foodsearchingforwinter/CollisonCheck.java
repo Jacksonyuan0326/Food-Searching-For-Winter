@@ -24,14 +24,14 @@ public class CollisonCheck {
         //actual col # and row # in the 2d map
         int map_left_col = obj_left_x/gp.tileSize;
         int map_right_col = obj_right_x/gp.tileSize;
-        int map_top_row = obj_top_y/45; //origin 60
-        int map_bottom_row = obj_bottom_y/45;  //origin 60
+        int map_top_row = obj_top_y/47; //origin 60
+        int map_bottom_row = obj_bottom_y/47;  //origin 60
 
         int pixel_num1, pixel_num2;
 
         switch(object.direction){
             case "up":
-                map_top_row = (obj_top_y-object.speed)/45; //origin 60
+                map_top_row = (obj_top_y-object.speed)/47; //origin 60
                 pixel_num1 = gp.tileM.mapTileCord[map_left_col][map_top_row];
                 pixel_num2 = gp.tileM.mapTileCord[map_right_col][map_top_row];
                 if(gp.tileM.tile[pixel_num1].collision==true || gp.tileM.tile[pixel_num2].collision==true ){
@@ -39,7 +39,7 @@ public class CollisonCheck {
                 }
                 break;
             case "down":
-                map_bottom_row = ((obj_bottom_y+object.speed)/45); //origin 60
+                map_bottom_row = ((obj_bottom_y+object.speed)/47); //origin 60
                 pixel_num1 = gp.tileM.mapTileCord[map_left_col][map_bottom_row];
                 pixel_num2 = gp.tileM.mapTileCord[map_right_col][map_bottom_row];
                 if(gp.tileM.tile[pixel_num1].collision==true || gp.tileM.tile[pixel_num2].collision==true ){
@@ -141,4 +141,48 @@ public class CollisonCheck {
 
         return index;
     }
+
+    public int checkWolf(Object bunny, Object[] wolf){
+        int index = 999;
+
+        for(int i = 0; i < gp.wolf.length; i++){
+            if(gp.wolf[i] != null){
+                //get bunny solid area position
+                bunny.solidArea.x = bunny.xpo +bunny.solidArea.x;
+                bunny.solidArea.y = bunny.ypo +bunny.solidArea.y;
+                // get the rewards solid area position
+                gp.wolf[i].solidArea.x = gp.wolf[i].xpo + gp.wolf[i].solidArea.x;
+                gp.wolf[i].solidArea.y = gp.wolf[i].ypo + gp.wolf[i].solidArea.y;
+
+                switch (bunny.direction){
+                    case "up":
+                        bunny.solidArea.y -= bunny.speed;
+                        break;
+                    case "down":
+                        bunny.solidArea.y += bunny.speed;
+                        break;
+                    case "left":
+                        bunny.solidArea.x -= bunny.speed;
+                        break;
+                    case "right":
+                        bunny.solidArea.x += bunny.speed;
+                        break;
+                }
+
+                if(bunny.solidArea.intersects(gp.wolf[i].solidArea)){
+                    if (wolf[i] != bunny) {
+                        bunny.IsCollison = true;
+                        index = i;
+                    }
+                }
+
+                bunny.solidArea.x = bunny.solidAreaDefaultX;
+                bunny.solidArea.y = bunny.solidAreaDefaultY;
+                gp.wolf[i].solidArea.x = gp.wolf[i].solidAreaDefaultX;
+                gp.wolf[i].solidArea.y = gp.wolf[i].solidAreaDefaultY;
+            }
+        }
+        return index;
+    }
+
 }

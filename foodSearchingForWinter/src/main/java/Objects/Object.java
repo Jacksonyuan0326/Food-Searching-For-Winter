@@ -1,5 +1,7 @@
 package Objects;
 
+import com.mycompany.foodsearchingforwinter.GamePanel;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.awt.Rectangle;
@@ -11,6 +13,7 @@ public class Object {
     public int xpo, ypo;
     /** speed of characters  */
     public int speed;
+    GamePanel gp;
 
     /**image of characters */
     public BufferedImage idle, up1, up2, down1, down2, left1, left2, right1, right2;
@@ -27,5 +30,9 @@ public class Object {
     public int solidAreaDefaultX, solidAreaDefaultY;
     /**check character collision */
     public boolean IsCollison = false;
+
+    public Object(GamePanel gp){
+        this.gp = gp;
+    }
 
 }

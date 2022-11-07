@@ -1,6 +1,7 @@
 package com.mycompany.foodsearchingforwinter;
 
 import Objects.Bunny;
+import Objects.Wolf;
 import Reward.All_Reward;
 import Tile.TileManager;
 
@@ -22,6 +23,11 @@ public class GamePanel extends JPanel implements  Runnable{
     /**bunny tile height */
     public int bunnytileHeight = 20 * scaleFactor; //60
 
+    /** wolf tile size */
+    public int wolftileWidth = 16 * scaleFactor; // 48
+
+    public int WolftileHeight = 16 * scaleFactor; //48
+
     /**the window UI col */
     public final int maxScreenCol = 27; //origin 16
     /**the window UI row */
@@ -37,7 +43,7 @@ public class GamePanel extends JPanel implements  Runnable{
 
     //set up FPS
     int FPS = 60;
-    TileManager tileM = new TileManager(this);
+    public TileManager tileM = new TileManager(this);
     Thread gameThread;
     /**check collision*/
     public CollisonCheck checker = new CollisonCheck(this); //change
@@ -50,6 +56,9 @@ public class GamePanel extends JPanel implements  Runnable{
     Bunny bunny = new Bunny(this, keyControl);
     /**array of object belong rewards class */
     public All_Reward the_rewards[] = new All_Reward[20];
+
+    /** number of wollf **/
+    public Wolf wolf[] = new Wolf[3];
 
     //GAME STATE
     public int gameState;
@@ -74,6 +83,7 @@ public class GamePanel extends JPanel implements  Runnable{
      */
     public void setUpGame(){
         theSetter.setThing();
+        theSetter.setWolf();
         gameState = titleState;
     }
     /**
@@ -126,6 +136,10 @@ public class GamePanel extends JPanel implements  Runnable{
         if(gameState == playState){
             //PLAY STATE
             bunny.update();
+            /** update for wolf */
+            for (int i = 0; i < wolf.length; i++){
+                wolf[i].update();
+            }
         }
         if(gameState == pauseState){
             //PAUSE STATE
@@ -152,7 +166,18 @@ public class GamePanel extends JPanel implements  Runnable{
                     the_rewards[i].draw(g2, this);
                 }
             }
+
+            /** draw bunny */
             bunny.draw(g2);
+
+            /** draw wolf */
+            for (int i = 0; i < wolf.length; i++){
+                if (wolf[i] != null){
+                    wolf[i].draw(g2, this);
+                }
+            }
+
+
     
             ui.draw(g2);
             g2.dispose();}
