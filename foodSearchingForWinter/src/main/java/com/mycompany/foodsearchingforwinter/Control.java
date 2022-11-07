@@ -77,15 +77,11 @@ public class Control implements KeyListener {
             if (code == KeyEvent.VK_D) {
                 isRight = true;
             }
+        }
+        //PA 
             if (code == KeyEvent.VK_P) {
-                gp.gameState = gp.pauseState;
-            }
-        }
-        //PAUSE STATE
-        if(gp.gameState == gp.pauseState){
-            pauseState();
-        }
-
+                pauseState();
+        }           
         //END STATE
         if(gp.gameState == gp.endState){
             gameOverState(code);
