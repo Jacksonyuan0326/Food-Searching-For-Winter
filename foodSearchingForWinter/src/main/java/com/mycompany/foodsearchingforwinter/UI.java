@@ -1,8 +1,6 @@
 package com.mycompany.foodsearchingforwinter;
 
-import java.awt.Font;
-import java.awt.Color;
-import java.awt.Graphics2D;
+import java.awt.*;
 import java.awt.image.*;
 import java.text.DecimalFormat;
 
@@ -31,7 +29,7 @@ public class UI {
     public int commandNum = 0;
 
     //timer for game
-    double play_time; 
+    double play_time;
     DecimalFormat dformat = new DecimalFormat("#0.00");
 
     /**
@@ -72,22 +70,22 @@ public class UI {
         }
         if(gp.gameState == gp.playState){
             if(gameFinished == true && gameLoss==false){
-            
+
                 g2.setFont(arial_80B);
                 g2.setColor(Color.WHITE);
                 String text;
                 int textLength;
                 int x;
                 int y;
-                
+
                 text = "Congratulation! You win!";
                 textLength =(int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
-    
+
                 x = gp.screenWidth/2 - textLength/2;
                 y = gp.screenHeight/2;
-    
+
                 g2.drawString(text, x, y);
-    
+
                 gp.gameThread = null;
             }
             else if (gameLoss == true){
@@ -97,49 +95,108 @@ public class UI {
                 int textLength;
                 int x;
                 int y;
-                
+
                 text = "oh no! You loss!";
                 textLength =(int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
-    
+
                 x = gp.screenWidth/2 - textLength/2;
                 y = gp.screenHeight/2;
+<<<<<<< HEAD
     
                 g2.drawString(text, x, y);   
                 gp.gameThread = null;
+=======
+
+                g2.drawString(text, x, y);
+                gp.gameState = gp.endState;
+>>>>>>> 05f08fb4bb3d4752655372e0ed1b4d5ed091cd67
             }
-            else{        
+            else{
                 g2.setFont(arial_40);
                 g2.setColor(Color.WHITE);
                 //LOAD SCORE OF BUNNY
-                g2.drawString("Score: " + gp.bunny.score, 25, 50); 
+                g2.drawString("Score: " + gp.bunny.score, 25, 50);
                 //LOAD CARROT INFORMATION HERE
                 g2.drawImage(carrotImage, 5*gp.tileSize,12, 48, 48, null);
                 g2.drawString( " : " + gp.bunny.carrotNum + "/5", 268 , 50);
                 //ADD MEDKIT SESSION HERE
                 g2.drawImage(medkitImage, 400,12, 48, 48, null );
                 g2.drawString( " x " + gp.bunny.medkitNum, 430 , 50);
-    
+
                 //calculate the time
                 play_time+= (double)1/60; //60 frame/sec so 
                 g2.drawString("Total time: "+dformat.format(play_time)+" sec", 600, 50);
-    
+
                 if(messageOn == true){
-                g2.setFont(g2.getFont().deriveFont(30F));
-                g2.drawString(message, gp.tileSize*9,gp.tileSize*13);
-                messageCounter++;
-    
-                //The message will print 2 seconds in the screen, cuz FPS = 60
-                if(messageCounter > 120){
-                    messageCounter = 0;
-                    messageOn = false;
+                    g2.setFont(g2.getFont().deriveFont(30F));
+                    g2.drawString(message, gp.tileSize*9,gp.tileSize*13);
+                    messageCounter++;
+
+                    //The message will print 2 seconds in the screen, cuz FPS = 60
+                    if(messageCounter > 120){
+                        messageCounter = 0;
+                        messageOn = false;
+                    }
                 }
             }
-        }
         }
         if(gp.gameState == gp.pauseState){
             pauseScreen();
         }
-       
+        if(gp.gameState == gp.endState){
+            drawGameOverScreen();
+        }
+
+    }
+    public void drawGameOverScreen(){
+        g2.setColor(new Color(0,0,0,150));
+        g2.fillRect(0,0,gp.screenWidth,gp.screenHeight);
+
+        int x;
+        int y;
+        String text;
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD, 110F));
+
+        text = "GAME OVER";
+
+        //SHADOW
+        g2.setColor(Color.black);
+        x = getCentreX(text);
+        y = gp.tileSize*4;
+        g2.drawString(text,x,y);
+
+        //MAIN
+        g2.setColor(Color.white);
+        g2.drawString(text, x -4, y-4);
+
+        //TWO OPTION
+        //RETRY
+        g2.setFont(g2.getFont().deriveFont(50F));
+        text = "Retry";
+        x = getCentreX(text);
+        y += gp.tileSize*4;
+        g2.drawString(text,x,y);
+        if(commandNum == 0){
+            g2.drawString(">",x-40,y);
+        }
+
+        //BACK TO TITLE SCREEN
+        text = "Quit";
+        x = getCentreX(text);
+        y+=48;
+        g2.drawString(text,x,y);
+        if(commandNum == 1){
+            g2.drawString(">",x-40,y);
+        }
+    }
+    public void drawSubWindow(int x, int y, int width, int height) {
+        Color c = new Color(0, 0, 0, 210);
+        g2.fillRoundRect(x, y, width, height, 35, 35);
+
+        c = new Color(255, 255, 255);
+        g2.setColor(c);
+        g2.setStroke(new BasicStroke(5));
+        g2.drawRoundRect(x + 5, y + 5, width - 10, height - 10, 25, 25);
     }
     /**draw the title screen */
     public void drawTitle(){
@@ -151,7 +208,7 @@ public class UI {
         String text = "Food Searching For Winter";
         int x = getCentreX(text);
         int y = gp.tileSize*3;
-        
+
         //SHADOW
         g2.setColor(Color.GRAY);
         g2.drawString(text, x+5, y+5);
