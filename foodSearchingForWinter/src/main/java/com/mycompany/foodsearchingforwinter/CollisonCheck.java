@@ -16,10 +16,10 @@ public class CollisonCheck {
      * @param object any player that belong to the the object class
      */
     public void check(Object object){
-        int obj_left_x = object.xpo + object.solidArea.x;
-        int obj_right_x = object.xpo+ object.solidArea.x + object.solidArea.width;
-        int obj_top_y = object.ypo + object.solidArea.y;
-        int obj_bottom_y = object.ypo + object.solidArea.y + object.solidArea.height; //origin 60 but doesn't work
+        int obj_left_x = object.worldX + object.solidArea.x;
+        int obj_right_x = object.worldX+ object.solidArea.x + object.solidArea.width;
+        int obj_top_y = object.worldY + object.solidArea.y;
+        int obj_bottom_y = object.worldY + object.solidArea.y + object.solidArea.height; //origin 60 but doesn't work
 
         //actual col # and row # in the 2d map
         int map_left_col = obj_left_x/gp.tileSize;
@@ -78,8 +78,8 @@ public class CollisonCheck {
         for(int i = 0; i < gp.the_rewards.length; i++){
             if(gp.the_rewards[i] != null){
                 //get bunny solid area position
-                object.solidArea.x = object.xpo +object.solidArea.x;
-                object.solidArea.y = object.ypo +object.solidArea.y;
+                object.solidArea.x = object.worldX +object.solidArea.x;
+                object.solidArea.y = object.worldY +object.solidArea.y;
                 // get the rewards solid area position
                 gp.the_rewards[i].solidArea.x = gp.the_rewards[i].x + gp.the_rewards[i].solidArea.x;
                 gp.the_rewards[i].solidArea.y = gp.the_rewards[i].y + gp.the_rewards[i].solidArea.y;
@@ -152,11 +152,11 @@ public class CollisonCheck {
         for(int i = 0; i < gp.wolf.length; i++){
             if(gp.wolf[i] != null){
                 //get bunny solid area position
-                bunny.solidArea.x = bunny.xpo +bunny.solidArea.x;
-                bunny.solidArea.y = bunny.ypo +bunny.solidArea.y;
+                bunny.solidArea.x = bunny.worldX +bunny.solidArea.x;
+                bunny.solidArea.y = bunny.worldY +bunny.solidArea.y;
                 // get the rewards solid area position
-                gp.wolf[i].solidArea.x = gp.wolf[i].xpo + gp.wolf[i].solidArea.x;
-                gp.wolf[i].solidArea.y = gp.wolf[i].ypo + gp.wolf[i].solidArea.y;
+                gp.wolf[i].solidArea.x = gp.wolf[i].worldX + gp.wolf[i].solidArea.x;
+                gp.wolf[i].solidArea.y = gp.wolf[i].worldY + gp.wolf[i].solidArea.y;
 
                 switch (bunny.direction){
                     case "up":

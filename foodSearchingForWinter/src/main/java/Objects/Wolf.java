@@ -14,11 +14,13 @@ import Objects.Object;
 public class Wolf extends Object{
     String name;
     int actionLockCounter = 0;
-    
+    int xpo;
+    int ypo;
     public Wolf(GamePanel gp){
         super(gp);
         name = "Wolf";
-
+        xpo = worldX;
+        ypo = worldY;
         solidArea = new Rectangle(8, 3, 32, 30);
         solidAreaDefaultX = solidArea.x;
         solidAreaDefaultY = solidArea.y;
@@ -27,7 +29,8 @@ public class Wolf extends Object{
     }
 
     public void setWolfBasic(){
-        speed = 2;
+        speed = 1;
+        onPath = true;
         direction = "down";
     }
 
@@ -48,18 +51,19 @@ public class Wolf extends Object{
             e.printStackTrace();
         }
     }
+
     public void setAction(){
         if (onPath == true){
 
-            int goalCol = (gp.bunny.xpo)/gp.tileSize;
-            System.out.println(goalCol);
-            int goalRow = (gp.bunny.ypo)/gp.tileSize;
-            System.out.println(goalRow);
-            searchShortestPath(goalCol, goalRow);
+            int goalCol = (gp.bunny.worldX)/gp.tileSize;
+            System.out.println("goal col = " + goalCol);
+            int goalRow = (gp.bunny.worldY)/gp.tileSize;
+            System.out.println("goal row = " + goalRow);
+            searchShortestPath(goalCol, goalRow, worldX, worldY);
 
         }else {
             actionLockCounter++;
-            if (actionLockCounter == 60) {
+            if (actionLockCounter == 30) {
                 Random random = new Random();
                 int i = random.nextInt(100) + 1;// pick up a number from 1 to 100
 
@@ -81,26 +85,31 @@ public class Wolf extends Object{
 
     }
     public void update(){   
-        setAction();
+
         IsCollison = false; //change start
         gp.checker.check(this);
 
         if(!IsCollison){
             switch(direction){
                 case "up":
-                    ypo -= speed;
+                    worldY -= speed;
+                    System.out.println("wolf position y " + worldY);
                     break;
                 case "down":
-                    ypo += speed;
+                    worldY += speed;
+                    System.out.println("wolf position y " + worldY);
                     break;
                 case "left":
-                    xpo -= speed;
+                    worldX -= speed;
+                    System.out.println("wolf position X " + worldX);
                     break;
                 case "right":
-                    xpo += speed;
+                    worldX += speed;
+                    System.out.println("wolf position X " + worldX);
                     break;
             }
         }
+        setAction();
 
         spriteCounter ++;
         //can adjust this 10 so the animation can be smoother
@@ -114,8 +123,8 @@ public class Wolf extends Object{
             spriteCounter = 0;
         }
 
-        int xDistance = Math.abs(gp.bunny.xpo - xpo);
-        int yDistance = Math.abs(gp.bunny.ypo - ypo);
+        int xDistance = Math.abs(gp.bunny.worldX - worldX);
+        int yDistance = Math.abs(gp.bunny.worldY - worldY);
         if (onPath == false && xDistance <= 100  && yDistance <= 100){
             onPath = true;
         }
@@ -166,6 +175,6 @@ public class Wolf extends Object{
         }
 
         /** drawing the wolf */
-        g2.drawImage(image, xpo, ypo, gp.wolftileWidth, gp.WolftileHeight, null);
+        g2.drawImage(image, worldX, worldY, gp.wolftileWidth, gp.WolftileHeight, null);
     }
 }

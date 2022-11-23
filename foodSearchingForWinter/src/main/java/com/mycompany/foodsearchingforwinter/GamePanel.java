@@ -58,11 +58,13 @@ public class GamePanel extends JPanel implements  Runnable{
     /**array of object belong rewards class */
     public All_Reward the_rewards[] = new All_Reward[20];
 
+
     /** number of wollf **/
     public Wolf wolf[] = new Wolf[3];
 
     /** pathfinding engine */
     public PathFinder Path = new PathFinder(this);
+
 
     //GAME STATE
     public int gameState;

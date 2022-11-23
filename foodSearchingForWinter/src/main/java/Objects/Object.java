@@ -10,7 +10,7 @@ import java.awt.Rectangle;
 public class Object {
 
     /**position of characters */
-    public int xpo, ypo;
+    public int worldX, worldY;
     /** speed of characters  */
     public int speed;
     GamePanel gp;
@@ -38,23 +38,30 @@ public class Object {
         this.gp = gp;
     }
 
-    public void searchShortestPath(int goalCol, int goalRow){
-        int startCol = gp.bunny.xpo / gp.tileSize;
+    public void searchShortestPath(int goalCol, int goalRow, int xpo, int ypo){
+        System.out.println("Xpo is: " + xpo);
+        System.out.println("ypo is: " + ypo);
+        int startCol = xpo/ gp.tileSize;
         System.out.println("startcol = " + startCol);
-        int startRow = gp.bunny.ypo / gp.tileSize;
+        int startRow = ypo / gp.tileSize;
         System.out.println("startrow = " + startRow);
 
-        gp.Path.setNode(startCol, startRow, goalCol, goalRow, this);
+        gp.Path.setNode(startCol, startRow, goalCol, goalRow);
+
 
         if (gp.Path.search() == true){
-            int nextX  = gp.Path.pathList.get(0).col * gp.tileSize;
-            int nextY  = gp.Path.pathList.get(0).row * gp.tileSize;
+            //int nextX  = gp.Path.pathList.get(0).col * gp.tileSize;
+            int nextX  = gp.Path.pathList.get(0).col;
+            System.out.println("nextX = "+ nextX);
+            //int nextY  = gp.Path.pathList.get(0).row * gp.tileSize;
+            int nextY  = gp.Path.pathList.get(0).row;
+            System.out.println("nextY = "+ nextY);
 
             //object position
-            int objLeftX = gp.bunny.xpo;
-            int objRightX = gp.bunny.xpo + gp.bunny.solidArea.width;
-            int objTopY = gp.bunny.ypo;
-            int objButtonY = gp.bunny.ypo + gp.bunny.solidArea.height;
+            int objLeftX = xpo/ gp.tileSize;
+            int objRightX = (xpo + 32) / gp.tileSize;
+            int objTopY = ypo / gp.tileSize;
+            int objButtonY = (ypo + 30) / gp.tileSize;
 
             if (objTopY > nextY && objLeftX >= nextX && objRightX < nextX + gp.tileSize){
                 direction = "up";

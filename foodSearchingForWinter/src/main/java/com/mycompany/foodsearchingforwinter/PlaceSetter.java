@@ -85,16 +85,16 @@ public class PlaceSetter {
      */
     public void setWolf(){
         gp.wolf[0] = new Wolf(gp);
-        gp.wolf[0].xpo = 50;
-        gp.wolf[0].ypo = 50;
+        gp.wolf[0].worldX = 50;
+        gp.wolf[0].worldY = 50;
 
         gp.wolf[1] = new Wolf(gp);
-        gp.wolf[1].xpo = 350;
-        gp.wolf[1].ypo = 400;
+        gp.wolf[1].worldX = 350;
+        gp.wolf[1].worldY = 400;
 
         gp.wolf[2] = new Wolf(gp);
-        gp.wolf[2].xpo = 800;
-        gp.wolf[2].ypo = 400;
+        gp.wolf[2].worldX = 800;
+        gp.wolf[2].worldY = 400;
     }
     
 }
