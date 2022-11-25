@@ -23,6 +23,8 @@ public class Bunny extends Object{
     /** the total medkit player gets*/
     public int medkitNum = 0;
 
+    public boolean isDead = false;
+
     /**The constructor sets basic position of player bunny
      * and read the bunny image
      * @param gp need GamePanel object
@@ -189,7 +191,9 @@ public class Bunny extends Object{
             score -= 50;
             if (score<0){
                 gp.ui.gameLoss = true;
+                isDead = true;
             }
+            else {isDead = false;}
             System.out.println("Bunny touched the wolf, bunny dies!\n");
         }
     }

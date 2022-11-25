@@ -56,9 +56,9 @@ public class Wolf extends Object{
         if (onPath == true){
 
             int goalCol = (gp.bunny.worldX)/gp.tileSize;
-            System.out.println("goal col = " + goalCol);
+             // System.out.println("goal col = " + goalCol);
             int goalRow = (gp.bunny.worldY)/gp.tileSize;
-            System.out.println("goal row = " + goalRow);
+            //System.out.println("goal row = " + goalRow);
             searchShortestPath(goalCol, goalRow, worldX, worldY);
 
         }else {
