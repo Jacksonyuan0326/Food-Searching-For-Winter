@@ -16,6 +16,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 
 public class UItest{
+    public GamePanel gamePanel;
+    public Graphics2D g2;
     @BeforeEach
     void setup(){
         GamePanel gamePanel = new GamePanel();
@@ -29,12 +31,11 @@ public class UItest{
         ui.showMessage(text);
         assertEquals(text, ui.message);
     }
-    @Test
-    void test_getCenterX(){
-        String text = "get Center working";
+    
+    @Test 
+    void test_ImageLoad(){
         GamePanel gamePanel = new GamePanel();
-        UI ui = new UI(gamePanel);;
-        int center = ui.getCentreX(text);
-        assertEquals(center, ui.getCentreX(text));
+        UI ui = new UI(gamePanel);
+
     }
 }
