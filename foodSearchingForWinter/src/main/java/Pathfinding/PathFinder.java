@@ -6,10 +6,10 @@ import java.util.ArrayList;
 
 public class PathFinder {
     GamePanel  gp;
-    Node[][] node;
+    public Node[][] node;
     ArrayList<Node> openList = new ArrayList<>();
     public ArrayList<Node> pathList = new ArrayList<>();
-    Node startNode, goalNode, currentNode;
+    public Node startNode, goalNode, currentNode;
     boolean reachedGoal = false;
     int step = 0;
 
@@ -76,10 +76,10 @@ public class PathFinder {
         //and add the current node on the list
         openList.add(currentNode);
 
-        System.out.println("Start node row = "+ startNode.row);
-        System.out.println("Start node col = "+ startNode.col);
-        System.out.println("goal node row = "+ goalNode.row);
-        System.out.println("goal node col = "+ goalNode.col);
+        //System.out.println("Start node row = "+ startNode.row);
+        //System.out.println("Start node col = "+ startNode.col);
+        //System.out.println("goal node row = "+ goalNode.row);
+        //System.out.println("goal node col = "+ goalNode.col);
 
         int col = 0;
         int row = 0;
@@ -122,8 +122,8 @@ public class PathFinder {
             currentNode.checked = true;
             openList.remove(currentNode);
 
-            System.out.println("row = " + row);
-            System.out.println("col = " + col);
+            //System.out.println("row = " + row);
+            //System.out.println("col = " + col);
 
             // open the up node
             if (row - 1 >= 0 ){
@@ -145,7 +145,7 @@ public class PathFinder {
             /** to find the best path */
             int bestNodeIndex = 0 ;
             int bestNodefCost = 999;
-            System.out.println("open list size: " + openList.size());
+            //System.out.println("open list size: " + openList.size());
 
             //scan the openlist to find the best one
             for (int i = 0; i < openList.size(); i++){
@@ -174,7 +174,7 @@ public class PathFinder {
             }
             step++;
         }
-        System.out.println("reached goal = " + reachedGoal);
+        //System.out.println("reached goal = " + reachedGoal);
         return reachedGoal;
     }
 
@@ -185,16 +185,16 @@ public class PathFinder {
             node.open = true;
             node.parent = currentNode;
             openList.add(node);
-            System.out.println("Open node added");
+            //System.out.println("Open node added");
         }
     }
     public void pathTracking() {
         Node current = goalNode;
 
-        System.out.println("current node col in tracking: " + current.col);
-        System.out.println("current node row in tracking: " + current.row);
-        System.out.println("start node col in tracking: " + startNode.col);
-        System.out.println("start node row in tracking: " + startNode.row);
+        //System.out.println("current node col in tracking: " + current.col);
+        //System.out.println("current node row in tracking: " + current.row);
+        //System.out.println("start node col in tracking: " + startNode.col);
+        //System.out.println("start node row in tracking: " + startNode.row);
 
         while (current != startNode){
             pathList.add(0, current);

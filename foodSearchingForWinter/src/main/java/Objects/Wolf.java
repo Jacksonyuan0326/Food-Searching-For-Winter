@@ -88,24 +88,26 @@ public class Wolf extends Object{
 
         IsCollison = false; //change start
         gp.checker.check(this);
+        int wolfIndex = gp.checker.checkWolf(gp.bunny, gp.wolf);
+        gp.bunny.bunnyDie(wolfIndex);
 
         if(!IsCollison){
             switch(direction){
                 case "up":
                     worldY -= speed;
-                    System.out.println("wolf position y " + worldY);
+                    //System.out.println("wolf position y " + worldY);
                     break;
                 case "down":
                     worldY += speed;
-                    System.out.println("wolf position y " + worldY);
+                    //System.out.println("wolf position y " + worldY);
                     break;
                 case "left":
                     worldX -= speed;
-                    System.out.println("wolf position X " + worldX);
+                    //System.out.println("wolf position X " + worldX);
                     break;
                 case "right":
                     worldX += speed;
-                    System.out.println("wolf position X " + worldX);
+                    //System.out.println("wolf position X " + worldX);
                     break;
             }
         }

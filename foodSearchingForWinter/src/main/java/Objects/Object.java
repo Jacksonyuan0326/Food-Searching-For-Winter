@@ -31,6 +31,8 @@ public class Object {
     /**check character collision */
     public boolean IsCollison = false;
 
+    public boolean isAttached = false;
+
     /** for pathfinding */
     public boolean onPath = false;
 
@@ -39,12 +41,12 @@ public class Object {
     }
 
     public void searchShortestPath(int goalCol, int goalRow, int xpo, int ypo){
-        System.out.println("Xpo is: " + xpo);
-        System.out.println("ypo is: " + ypo);
+        //System.out.println("Xpo is: " + xpo);
+        //System.out.println("ypo is: " + ypo);
         int startCol = xpo/ gp.tileSize;
-        System.out.println("startcol = " + startCol);
+        //System.out.println("startcol = " + startCol);
         int startRow = ypo / gp.tileSize;
-        System.out.println("startrow = " + startRow);
+        //System.out.println("startrow = " + startRow);
 
         gp.Path.setNode(startCol, startRow, goalCol, goalRow);
 
@@ -52,10 +54,10 @@ public class Object {
         if (gp.Path.search() == true){
             //int nextX  = gp.Path.pathList.get(0).col * gp.tileSize;
             int nextX  = gp.Path.pathList.get(0).col;
-            System.out.println("nextX = "+ nextX);
+            //System.out.println("nextX = "+ nextX);
             //int nextY  = gp.Path.pathList.get(0).row * gp.tileSize;
             int nextY  = gp.Path.pathList.get(0).row;
-            System.out.println("nextY = "+ nextY);
+            //System.out.println("nextY = "+ nextY);
 
             //object position
             int objLeftX = xpo/ gp.tileSize;
