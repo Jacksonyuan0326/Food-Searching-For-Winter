@@ -38,6 +38,8 @@ public class UItest{
         GamePanel gamePanel = new GamePanel();
         UI ui = new UI(gamePanel);
         try{
+            ui.carrotImage = ImageIO.read(getClass().getResourceAsStream("/Reward/carrot3.png"));
+            ui.medkitImage= ImageIO.read(getClass().getResourceAsStream("/Reward/medkit.png"));
             ui.mainScreenImage = ImageIO.read(getClass().getResourceAsStream("/Title/MainScreen.png"));
             ui.helpScreenImage = ImageIO.read(getClass().getResourceAsStream("/Title/Help.png"));
             System.out.println("image load correct");
@@ -50,6 +52,7 @@ public class UItest{
         GamePanel gamePanel = new GamePanel();
         UI ui = new UI(gamePanel);
         assertEquals(0, ui.commandNum);
+        assertEquals(0,ui.messageCounter);
         assertTrue(ui.messageOn == false);
         assertTrue(ui.gameFinished == false);
         assertTrue(ui.gameLoss == false);
