@@ -54,4 +54,5 @@ public class UItest{
         assertTrue(ui.gameFinished == false);
         assertTrue(ui.gameLoss == false);
     }
+
 }
