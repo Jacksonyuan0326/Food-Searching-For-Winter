@@ -13,7 +13,7 @@ public class DoorTest {
     @Test
     void name(){
         Door d = new Door();
-        assertTrue(d.name == "door");
+        assertTrue(d.name.equals("door"));
         System.out.println("name correct");
     }
 

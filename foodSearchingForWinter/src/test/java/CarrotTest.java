@@ -12,7 +12,7 @@ public class CarrotTest {
     @Test
     void name(){
         Reward_carrot c = new Reward_carrot();
-        assertTrue(c.name == "carrot");
+        assertTrue(c.name.equals("carrot"));
         System.out.println("name correct");
     }
 

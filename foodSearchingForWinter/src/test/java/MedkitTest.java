@@ -11,7 +11,7 @@ public class MedkitTest {
     @Test
     void name(){
         Reward_medkit c = new Reward_medkit();
-        assertTrue(c.name == "medkit");
+        assertTrue(c.name.equals("medkit"));
         System.out.println("name correct");
     }
 

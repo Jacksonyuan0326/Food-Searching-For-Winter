@@ -16,8 +16,15 @@ public class SpoiledCarrotTest {
     @Test
     void name() {
         spoiled_carrot carrot = new spoiled_carrot();
-        assertTrue(carrot.name == "spoiled_carrot");
+        assertTrue(carrot.name.equals("spoiled_carrot"));
         System.out.println("name correct");
+    }
+    
+    @Test
+    void collision(){
+        spoiled_carrot spc = new spoiled_carrot();
+        assertTrue(spc.collision == false);
+        System.out.println("collison correct");
     }
 
     @Test
