@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import com.mycompany.foodsearchingforwinter.*;
 
 import Objects.Bunny;
+import Reward.All_Reward;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -41,7 +42,68 @@ public class BunnyTest {
         bunnyTest.bunnyDie(-5);
         assertTrue(bunnyTest.isDead == true);
     }
+    @Test
+    void testScore(){
+        // GamePanel gamePanel = new GamePanel();
+        // Control keyControl = new Control(gamePanel);
+        // PlaceSetter placeSetter = new PlaceSetter(gamePanel);
+        // placeSetter.setThing();
+        // Bunny bunny = new Bunny(gamePanel, keyControlTest);
+        // int rewardsIndex;
+        // for(int i = 0; i < gamePanel.the_rewards.length; i++){
+        //     rewardsIndex = gamePanel.checker.checkRewards(bunny, true);
+        //     bunny.pickUpRewards(rewardsIndex);
+        //     if(gamePanel.the_rewards[i].name.equals("carrot")){
+        //         bunnyTest.score+=5;
+        //         assertEquals(bunnyTest.score, bunny.score);
+        //     }
+        //     if(gamePanel.the_rewards[i].name.equals("medkit")){
+        //         bunnyTest.score+=10;
+        //         assertEquals(bunnyTest.score, bunny.score);
+        //     }
+        //     if(gamePanel.the_rewards[i].name.equals("spoiled_carrot")){
+        //         bunnyTest.score-=5;
+        //         assertEquals(bunnyTest.score, bunny.score);
+        //     }
+        // }
+        // GamePanel gamePanel = new GamePanel();
+        // PlaceSetter theSetterTest = new PlaceSetter(gamePanel);
+        // theSetterTest.setThing();
+        // gamePanel.setUpGame();
+        // bunnyTest=new Bunny(gamePanel,keyControlTest);
+       
+        // gp = new GamePanel();
+        // PlaceSetter theSetter = new PlaceSetter(gp);
+        // theSetter.setThing();
+        // gp.setUpGame();
+        // Bunny bunny = new Bunny(gp, keyControlTest);
+        GamePanel gamePanel = new GamePanel();
+        gp = gamePanel;
+        PlaceSetter theSetter = new PlaceSetter(gamePanel);
+        theSetter.setThing();
+        Control keyControl = new Control(gamePanel);
+        keyControlTest = keyControl;
+        Bunny bunny = new Bunny(gp, keyControlTest);
+        bunnyTest = bunny;
 
+        for(int i =0; i < gamePanel.the_rewards.length; i++){
+            if(gamePanel.the_rewards[i].name.equals("carrot")){
+                bunnyTest.score+=5;
+                bunny.pickUpRewards(i);
+                assertEquals(bunnyTest.score, bunny.score);
+            }
+            // if(gp.the_rewards[i].name.equals("medkit")){
+            //     bunnyTest.score+=10;
+            //     bunny.pickUpRewards(i);
+            //     assertEquals(bunnyTest.score, bunny.score);
+            // }
+            // if(gp.the_rewards[i].name.equals("spoiled_carrot")){
+            //     bunnyTest.score-=5;
+            //     bunny.pickUpRewards(i);
+            //     assertEquals(bunnyTest.score, bunny.score);
+            // }
+        }
+    }
 
 
 }

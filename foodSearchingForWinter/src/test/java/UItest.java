@@ -8,6 +8,7 @@ import Title.All_Titles;
 
 import java.awt.Graphics2D;
 import java.awt.image.*;
+import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
@@ -36,6 +37,21 @@ public class UItest{
     void test_ImageLoad(){
         GamePanel gamePanel = new GamePanel();
         UI ui = new UI(gamePanel);
-
+        try{
+            ui.mainScreenImage = ImageIO.read(getClass().getResourceAsStream("/Title/MainScreen.png"));
+            ui.helpScreenImage = ImageIO.read(getClass().getResourceAsStream("/Title/Help.png"));
+            System.out.println("image load correct");
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+    }
+    @Test
+    void test_gameFinished(){
+        GamePanel gamePanel = new GamePanel();
+        UI ui = new UI(gamePanel);
+        assertEquals(0, ui.commandNum);
+        assertTrue(ui.messageOn == false);
+        assertTrue(ui.gameFinished == false);
+        assertTrue(ui.gameLoss == false);
     }
 }
