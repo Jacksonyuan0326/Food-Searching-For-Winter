@@ -16,15 +16,15 @@ public class UI {
     GamePanel gp;
     Graphics2D g2;
     Font arial_40, arial_80B;
-    BufferedImage carrotImage;
-    BufferedImage medkitImage;
-    BufferedImage mainScreenImage;
-    BufferedImage helpScreenImage;
+    public BufferedImage carrotImage;
+    public BufferedImage medkitImage;
+    public BufferedImage mainScreenImage;
+    public BufferedImage helpScreenImage;
     /**for checking if need to display image */
     public boolean messageOn = false;
     /**the string you want to display on screen */
     public String message = "";
-    int messageCounter = 0;
+    public int messageCounter = 0;
     /**check if game needs to finish */
     public boolean gameFinished = false; //if player get all carrot
     /**check if player losses the game */

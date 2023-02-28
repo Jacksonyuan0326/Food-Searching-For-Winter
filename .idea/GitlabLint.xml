@@ -5,6 +5,7 @@
     <option name="gitlabUrls">
       <set>
         <option value="https://csil-git1.cs.surrey.sfu.ca/api/v4" />
+        <option value="https://github.com/api/v4" />
       </set>
     </option>
   </component>
